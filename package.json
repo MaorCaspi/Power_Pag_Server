@@ -1,0 +1,27 @@
+{
+  "name": "node_demo",
+  "version": "1.0.0",
+  "description": "Node demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles --forceExit",
+    "devstart": "nodemon app.js"
+  },
+  "author": "Menachi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
