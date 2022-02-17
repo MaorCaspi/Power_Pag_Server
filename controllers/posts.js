@@ -40,10 +40,7 @@ const addNewPost = (req, res) => {
                 'error': error.message
             })
         } else {
-            res.status(200).send({
-                'status': 'OK',
-                'post': newPost
-            })
+            res.status(200).send(newPost)
         }
     })
 }

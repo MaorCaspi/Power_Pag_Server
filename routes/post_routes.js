@@ -45,7 +45,9 @@ const authenticate = require('../common/auth_middleware')
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Post'
+*               type: array
+*               items:
+*                 $ref: '#/components/schemas/Post'
 */
 router.get('/', authenticate, Post.getPosts)
 
@@ -86,7 +88,7 @@ router.get('/:id', authenticate, Post.getPostById)
 *             $ref: '#/components/schemas/Post'
 *     responses:
 *       200:
-*         description: The new post
+*         description: The posts list
 *         content:
 *           application/json:
 *             schema:

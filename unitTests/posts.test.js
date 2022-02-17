@@ -58,7 +58,7 @@ describe('Testing Post API',()=>{
             'sender' : sender
         })
         expect(response.statusCode).toEqual(200)
-        const newPost = response.body.post
+        const newPost = response.body
         expect(newPost.message).toEqual(postMessage)
         
         const response2 = await request(app).get('/post/' + newPost._id)
