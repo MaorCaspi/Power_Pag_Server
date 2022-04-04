@@ -38,8 +38,8 @@ const port = process.env.PORT
 const indexRouter = require('./routes/index')
 app.use('/',indexRouter)
 
-const postRouter = require('./routes/post_routes')
-app.use('/post',postRouter)
+const eventRouter = require('./routes/event_routes')
+app.use('/event',eventRouter)
 
 const authRouter = require('./routes/auth_routes')
 app.use('/auth',authRouter)

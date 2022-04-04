@@ -1,21 +1,21 @@
 const express = require('express')
 const router = express.Router()
 
-const Post = require('../controllers/posts')
+const Event = require('../controllers/events')
 const authenticate = require('../common/auth_middleware')
 
 /**
 * @swagger
 * tags:
-*   name: Post Api
-*   description: The Post API
+*   name: Event Api
+*   description: The Event API
 */
 
 /**
 * @swagger
 * components:
 *   schemas:
-*     Post:
+*     Event:
 *       type: object
 *       required:
 *         - message
@@ -23,10 +23,10 @@ const authenticate = require('../common/auth_middleware')
 *       properties:
 *         message:
 *           type: string
-*           description: The post text 
+*           description: The Event text 
 *         sender:
 *           type: string
-*           description: The user who send the post id
+*           description: The user who send the event id
 *       example:
 *         message: 'this is swagger test message'
 *         sender: '123456'
@@ -35,28 +35,28 @@ const authenticate = require('../common/auth_middleware')
 
 /**
 * @swagger
-* /post:
+* /event:
 *   get:
-*     summary: get all posts
-*     tags: [Post Api]
+*     summary: get all events
+*     tags: [Event Api]
 *     responses:
 *       200:
-*         description: The posts list
+*         description: The events list
 *         content:
 *           application/json:
 *             schema:
 *               type: array
 *               items:
-*                 $ref: '#/components/schemas/Post'
+*                 $ref: '#/components/schemas/Event'
 */
-router.get('/', authenticate, Post.getPosts)
+router.get('/', /*authenticate,*/ Event.getEvents)
 
 /**
 * @swagger
-* /post/{id}:
+* /event/{id}:
 *   get:
-*     summary: get all posts
-*     tags: [Post Api]
+*     summary: get all events
+*     tags: [Event Api]
 *     parameters:
 *       - in: path
 *         name: id
@@ -72,7 +72,7 @@ router.get('/', authenticate, Post.getPosts)
 *             schema:
 *               $ref: '#/components/schemas/Post'
 */
-router.get('/:id', authenticate, Post.getPostById)
+router.get('/:id',/*authenticate,*/ Event.getEventById)
 
 /**
 * @swagger
@@ -94,6 +94,6 @@ router.get('/:id', authenticate, Post.getPostById)
 *             schema:
 *               $ref: '#/components/schemas/Post'
 */
-router.post('/', authenticate, Post.addNewPost)
+router.post('/', /*authenticate,*/ Event.addNewEvent)
 
 module.exports = router

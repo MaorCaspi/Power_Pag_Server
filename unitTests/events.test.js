@@ -22,8 +22,8 @@ afterAll(done=>{
 })
 
 
-describe('Testing Post API',()=>{
-    const postMessage = 'this is my test post'
+describe('Testing Event API',()=>{
+    const eventMessage = 'this is my test event'
     const sender = 'Eliav'
     let accessToken = ''
     let userId = ''
@@ -46,25 +46,25 @@ describe('Testing Post API',()=>{
         accessToken = response.body.accessToken
     })
 
-    test('post get',async ()=>{
-        const response = await request(app).get('/post').set({ authorization: 'JWT ' + accessToken })
+    test('event get',async ()=>{
+        const response = await request(app).get('/event').set({ authorization: 'JWT ' + accessToken })
         expect(response.statusCode).toEqual(200)
     })
 
-    test('add new post',async ()=>{
-        const response = await request(app).post('/post').set({ authorization: 'JWT ' + accessToken })
+    test('add new event',async ()=>{
+        const response = await request(app).post('/event').set({ authorization: 'JWT ' + accessToken })
         .send({
-            'message' : postMessage,
+            'message' : eventMessage,
             'sender' : sender
         })
         expect(response.statusCode).toEqual(200)
-        const newPost = response.body
-        expect(newPost.message).toEqual(postMessage)
+        const newEvent = response.body
+        expect(newEvent.message).toEqual(eventMessage)
         
-        const response2 = await request(app).get('/post/' + newPost._id)
+        const response2 = await request(app).get('/event/' + newEvent._id)
         .set({ authorization: 'JWT ' + accessToken })
         expect(response2.statusCode).toEqual(200)
-        const post2 = response2.body
-        expect(post2.message).toEqual(postMessage)
+        const event2 = response2.body
+        expect(event2.message).toEqual(eventMessage)
     })
 })

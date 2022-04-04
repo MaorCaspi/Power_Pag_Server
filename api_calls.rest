@@ -6,24 +6,24 @@ GET http://localhost/
 ###
 
 
-GET http://localhost/post
+GET http://localhost/event
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 
 ###
 
 
-GET http://localhost/post/62449f138441e7df096bda06
+GET http://localhost/event/624b4e4b84559ed287217296
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 
 ###
 
 
-POST http://localhost/post
+POST http://localhost/event
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 Content-Type: application/json
 
 {
-    "message" : "this is my authorized new post mongo"
+    "message" : "this is my authorized new event mongo2"
 }
 
 ###
