@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == "development") {
                 version: "1.0.0",
                 description: "A simple Express Library API",
             },
-            servers: [{url: "http://localhost:" + process.env.PORT,},],
+            servers: [{url: "http://power-pag.cs.colman.ac.il",},],
         },
         apis: ["./routes/*.js"],
     };
