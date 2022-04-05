@@ -32,7 +32,7 @@ const addNewEvent = (req, res) => {
         name: req.body.name,
         dateAndTime: req.body.dateAndTime,
         place: req.body.place,
-        discription: req.body.discription
+        description: req.body.description
     })
 
     event.save((error, newEvent) => {

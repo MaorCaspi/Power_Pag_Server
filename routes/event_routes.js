@@ -24,7 +24,7 @@ const authenticate = require('../common/auth_middleware')
 *         name:
 *           type: string
 *           description: The event name 
-*         discription:
+*         description:
 *           type: string
 *           description: The event description
 *         place:
@@ -37,7 +37,7 @@ const authenticate = require('../common/auth_middleware')
 *         name: 'Training diapers'
 *         dateAndTime: '12/05/2022 08:20'
 *         place: 'Building A, 5th floor, room 435'
-*         discription: 'Some discription text'
+*         description: 'Some description text'
 */
 
 
@@ -86,7 +86,7 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 * @swagger
 * /event:
 *   post:
-*     summary: add new event
+*     summary: Add new event
 *     tags: [Event Api]
 *     requestBody:
 *       required: true
