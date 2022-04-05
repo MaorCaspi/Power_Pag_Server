@@ -18,18 +18,26 @@ const authenticate = require('../common/auth_middleware')
 *     Event:
 *       type: object
 *       required:
-*         - message
-*         - sender
+*         - name
+*         - dateAndTime
 *       properties:
-*         message:
+*         name:
 *           type: string
-*           description: The Event text 
-*         sender:
+*           description: The event name 
+*         discription:
 *           type: string
-*           description: The user who send the event id
+*           description: The event description
+*         place:
+*           type: string
+*           description: The event place 
+*         dateAndTime:
+*           type: string
+*           description: The event date and time
 *       example:
-*         message: 'this is swagger test message'
-*         sender: '123456'
+*         name: 'Training diapers'
+*         dateAndTime: '12/05/2022 08:20'
+*         place: 'Building A, 5th floor, room 435'
+*         discription: 'Some discription text'
 */
 
 
@@ -37,7 +45,7 @@ const authenticate = require('../common/auth_middleware')
 * @swagger
 * /event:
 *   get:
-*     summary: get all events
+*     summary: Get all events
 *     tags: [Event Api]
 *     responses:
 *       200:
@@ -55,7 +63,7 @@ router.get('/', /*authenticate,*/ Event.getEvents)
 * @swagger
 * /event/{id}:
 *   get:
-*     summary: get all events
+*     summary: Get event by ID
 *     tags: [Event Api]
 *     parameters:
 *       - in: path
@@ -63,36 +71,48 @@ router.get('/', /*authenticate,*/ Event.getEvents)
 *         schema:
 *           type: string
 *         required: true
-*         description: The post id
+*         description: The event id
 *     responses:
 *       200:
-*         description: The posts list
+*         description: The request event
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Post'
+*               $ref: '#/components/schemas/Event'
 */
 router.get('/:id',/*authenticate,*/ Event.getEventById)
 
 /**
 * @swagger
-* /post:
+* /event:
 *   post:
-*     summary: add new post
-*     tags: [Post Api]
+*     summary: add new event
+*     tags: [Event Api]
 *     requestBody:
 *       required: true
 *       content:
 *         application/json:
 *           schema:
 *             $ref: '#/components/schemas/Post'
+*             properties:
+*                name:
+*                  type: string
+*                description:
+*                  type: string
+*                place:
+*                 type: string
+*                dateAndTime:
+*                 type: string
+*             required:
+*               - name
+*               - dateAndTime
 *     responses:
 *       200:
-*         description: The posts list
+*         description: The event was created successfully
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Post'
+*               $ref: '#/components/schemas/Event'
 */
 router.post('/', /*authenticate,*/ Event.addNewEvent)
 

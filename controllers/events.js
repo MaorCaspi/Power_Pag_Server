@@ -1,6 +1,7 @@
 const Event = require('../models/event_model')
 
 const getEvents = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
     try {
         events = await Event.find()
         res.status(200).send(events)
@@ -13,6 +14,7 @@ const getEvents = async (req, res) => {
 }
 
 const getEventById = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
     try {
         events = await Event.findById(req.params.id)
         res.status(200).send(events)
@@ -25,12 +27,12 @@ const getEventById = async (req, res) => {
 }
 
 const addNewEvent = (req, res) => {
-    console.log('addNewEvent ' + req.body.message)
-    sender = "bla bla"
-
+    res.header("Access-Control-Allow-Origin", "*")
     const event = Event({
-        message: req.body.message,
-        sender: sender
+        name: req.body.name,
+        dateAndTime: req.body.dateAndTime,
+        place: req.body.place,
+        discription: req.body.discription
     })
 
     event.save((error, newEvent) => {

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV == "development") {
             info: {
                 title: "Node Demo API",
                 version: "1.0.0",
-                description: "A simple Express Library API",
+                description: "Power Pag Library API",
             },
             servers: [{url: "http://power-pag.cs.colman.ac.il",},],
         },

@@ -1,11 +1,19 @@
 const mongoose = require("mongoose")
 
 const eventSchema = new mongoose.Schema({
-    message: {
+    name: {
         type: String,
         required: true
     },
-    sender: {
+    description: {
+        type: String,
+        required: false
+    },
+    place: {
+        type: String,
+        required: false
+    },
+    dateAndTime: {
         type: String,
         required: true
     }
