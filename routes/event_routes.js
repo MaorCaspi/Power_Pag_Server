@@ -97,7 +97,7 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Post'
+*             $ref: '#/components/schemas/Event'
 *             properties:
 *                name:
 *                  type: string

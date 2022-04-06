@@ -60,7 +60,7 @@ router.get('/', /*authenticate,*/ Video.getVideos)
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Post'
+*             $ref: '#/components/schemas/Event'
 *             properties:
 *                url:
 *                  type: string
