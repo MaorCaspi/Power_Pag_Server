@@ -11,9 +11,8 @@ if (process.env.NODE_ENV == "development") {
         definition: {
             openapi: "3.0.0",
             info: {
-                title: "Node Demo API",
+                title: "Power Pag Library API",
                 version: "1.0.0",
-                description: "Power Pag Library API",
             },
             servers: [{url: "http://power-pag.cs.colman.ac.il",},],
         },
@@ -22,7 +21,6 @@ if (process.env.NODE_ENV == "development") {
     const specs = swaggerJsDoc(options);
     app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
  }
- 
 
 
 app.use(bodyParser.urlencoded({extended:true, limit: '1m'}))
@@ -40,6 +38,9 @@ app.use('/',indexRouter)
 
 const eventRouter = require('./routes/event_routes')
 app.use('/event',eventRouter)
+
+const videoRouter = require('./routes/video_routes')
+app.use('/video',videoRouter)
 
 const authRouter = require('./routes/auth_routes')
 app.use('/auth',authRouter)
