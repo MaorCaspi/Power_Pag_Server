@@ -56,6 +56,8 @@ const authenticate = require('../common/auth_middleware')
 *               type: array
 *               items:
 *                 $ref: '#/components/schemas/Event'
+*       400:
+*         description: Error
 */
 router.get('/', /*authenticate,*/ Event.getEvents)
 
@@ -79,6 +81,8 @@ router.get('/', /*authenticate,*/ Event.getEvents)
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Event'
+*       400:
+*         description: Error
 */
 router.get('/:id',/*authenticate,*/ Event.getEventById)
 
@@ -113,6 +117,8 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Event'
+*       400:
+*         description: Error
 */
 router.post('/', /*authenticate,*/ Event.addNewEvent)
 
