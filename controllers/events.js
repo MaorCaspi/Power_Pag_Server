@@ -2,8 +2,12 @@ const Event = require('../models/event_model')
 
 const getEvents = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
+
+     var dateNow=new Date();
+     dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
+
     try {
-        events = await Event.find()
+        events = await Event.find({dateAndTime: { $gt: dateNow}}).sort( { dateAndTime: 1 } )
         res.status(200).send(events)
     } catch (err) {
         res.status(400).send({
@@ -30,7 +34,7 @@ const addNewEvent = (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
     const event = Event({
         name: req.body.name,
-        dateAndTime: req.body.dateAndTime,
+        dateAndTime: new Date(req.body.dateAndTime),
         place: req.body.place,
         description: req.body.description
     })

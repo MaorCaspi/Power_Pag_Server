@@ -35,7 +35,7 @@ const authenticate = require('../common/auth_middleware')
 *           description: The event date and time
 *       example:
 *         name: 'Training diapers'
-*         dateAndTime: '12/05/2022 08:20'
+*         dateAndTime: '2022-04-30T13:00Z'
 *         place: 'Building A, 5th floor, room 435'
 *         description: 'Some description text'
 */
@@ -45,7 +45,7 @@ const authenticate = require('../common/auth_middleware')
 * @swagger
 * /event:
 *   get:
-*     summary: Get all events
+*     summary: Get all future events sorted by the date and time in ascending order
 *     tags: [Event Api]
 *     responses:
 *       200:
