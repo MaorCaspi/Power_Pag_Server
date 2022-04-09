@@ -11,7 +11,7 @@ const sendError = (res,code,msg)=>{
 }
 
 const register = async (req, res) => {
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
 
     try{
@@ -40,9 +40,8 @@ const register = async (req, res) => {
     }
 }
 
-
 const login = async (req, res) => {
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
     if (email == null || password == null) return sendError(res,400,'wrong email or password')
     

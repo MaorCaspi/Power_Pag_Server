@@ -1,10 +1,15 @@
 const Video = require('../models/video_model')
 
-const getVideos = async (req, res) => {
+const getVideos= async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
-
+    lang=req.query.language;
     try {
-        videos = await Video.find()
+        if(!lang){
+            videos = await Video.find({}, {"__v":0});
+        }
+        else{
+            videos = await Video.find({"language" : lang}, {"language": 0, "__v":0});
+        }
         res.status(200).send(videos)
     } catch (err) {
         res.status(400).send({
@@ -17,7 +22,8 @@ const getVideos = async (req, res) => {
 const addNewVideo = (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
     const video = Video({
-        url: req.body.url
+        _id: req.body._id,
+        language: req.body.language
     })
 
     video.save((error, newVideo) => {

@@ -18,13 +18,18 @@ const authenticate = require('../common/auth_middleware')
 *     Video:
 *       type: object
 *       required:
-*         - url
+*         - _id
+*         - language
 *       properties:
-*         url:
+*         _id:
 *           type: string
-*           description: The YouTube video url 
+*           description: The YouTube video url
+*         language:
+*           type: integer
+*           description: Language ID of the language in the video. 0-Hebrew, 1-English
 *       example:
-*         url: 'https://www.youtube.com/watch?v=RRwh-dICK_I'
+*         _id: 'https://www.youtube.com/watch?v=RRwh-dICK_I'
+*         language: 0
 */
 
 
@@ -34,9 +39,16 @@ const authenticate = require('../common/auth_middleware')
 *   get:
 *     summary: Get all videos urls
 *     tags: [Video Api]
+*     parameters:
+*       - in: query
+*         name: language
+*         schema:
+*           type: integer
+*         required: false
+*         description: Optional-filter by language ID. Hebrew-0 and English-1
 *     responses:
 *       200:
-*         description: The videos list
+*         description: The videos list.
 *         content:
 *           application/json:
 *             schema:
@@ -60,12 +72,15 @@ router.get('/', /*authenticate,*/ Video.getVideos)
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Event'
+*             $ref: '#/components/schemas/Video'
 *             properties:
-*                url:
+*                _id:
 *                  type: string
+*                language:
+*                  type: integer
 *             required:
-*               - url
+*               - _id
+*               - language
 *     responses:
 *       200:
 *         description: The video link was created successfully
