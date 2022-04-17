@@ -36,7 +36,7 @@ const register = async (req, res) => {
             'phoneNumber' : phoneNumber
         })
         newUser = await user.save();
-        res.status(200).send(newUser)
+        res.status(200).send({'fullName' : fullName, 'adminPrivilege' : user.adminPrivilege})
 
     }catch(err){
         res.status(400).send({
@@ -63,7 +63,7 @@ const login = async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn: process.env.JWT_TOKEN_EXPIRATION}
             )
-        res.status(200).send({'accessToken' : accessToken})
+        res.status(200).send({/*'accessToken' : accessToken,*/'fullName' : user.fullName, 'adminPrivilege' : user.adminPrivilege})
 
     }catch(err){
         return sendError(res,400,err.message)

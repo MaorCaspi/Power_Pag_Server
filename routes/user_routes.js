@@ -39,7 +39,7 @@ const User = require('../controllers/users')
 *           description: The user's phone number
 *         adminPrivilege:
 *           type: boolian
-*           description: True = Admin Privilege
+*           description: True = Admin Privilege, the defult is false
 *       example:
 *         email: 'test@gmail.com'
 *         password: '123456'
@@ -110,7 +110,7 @@ router.post('/login', User.login)
 *               - phoneNumber
 *     responses:
 *       200:
-*         description: Register successfully
+*         description: Register successfully, return the full name and the user's permission
 *         content:
 *           application/json:
 *             schema:
@@ -127,7 +127,7 @@ router.post('/register', User.register)
 *     tags: [User Api]
 *     responses:
 *       200:
-*         description: Logout successfully
+*         description: Logout successfullyreturn the full name and the user's permission
 *       400:
 *         description: Error
 */
