@@ -13,6 +13,9 @@ const sendError = (res,code,msg)=>{
 const register = async (req, res) => {
     const email = req.body.email.toLowerCase()
     const password = req.body.password
+    const fullName = req.body.fullName
+    const israeliId = req.body.israeliId
+    const phoneNumber = req.body.phoneNumber
 
     try{
         const exists = await User.findOne({'email' : email})
@@ -27,7 +30,10 @@ const register = async (req, res) => {
 
         const user = User({
             'email' : email,
-            'password': hashPwd
+            'password': hashPwd,
+            'fullName' : fullName,
+            'israeliId' : israeliId,
+            'phoneNumber' : phoneNumber
         })
         newUser = await user.save();
         res.status(200).send(newUser)

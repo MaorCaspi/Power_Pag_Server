@@ -1,24 +1,26 @@
 const express = require('express')
 const router = express.Router()
 
-const Auth = require('../controllers/auth')
+const User = require('../controllers/users')
 
 /**
 * @swagger
 * tags:
-*   name: Auth Api
-*   description: The Auth API
+*   name: User Api
+*   description: The user API
 */
 
 /**
 * @swagger
 * components:
 *   schemas:
-*     Auth:
+*     User:
 *       type: object
 *       required:
 *         - email
 *         - password
+*         - fullName
+*         - phoneNumber
 *       properties:
 *         email:
 *           type: string
@@ -26,23 +28,38 @@ const Auth = require('../controllers/auth')
 *         password:
 *           type: string
 *           description: The user's password
+*         fullName:
+*           type: string
+*           description: The user's full name
+*         israeliId:
+*           type: string
+*           description: The user's israeli ID
+*         phoneNumber:
+*           type: string
+*           description: The user's phone number
+*         adminPrivilege:
+*           type: boolian
+*           description: True = Admin Privilege
 *       example:
-*         user: 'test@gmail.com'
+*         email: 'test@gmail.com'
 *         password: '123456'
+*         fullName: 'Maor Caspi'
+*         israeliId: '208460410'
+*         phoneNumber: '0547929879'
 */
 
 /**
 * @swagger
-* /auth/login:
+* /user/login:
 *   post:
 *     summary: Login to server
-*     tags: [Auth Api]
+*     tags: [User Api]
 *     requestBody:
 *       required: true
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Auth'
+*             $ref: '#/components/schemas/User'
 *             properties:
 *                email:
 *                  type: string
@@ -57,55 +74,63 @@ const Auth = require('../controllers/auth')
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Auth'
+*               $ref: '#/components/schemas/User'
 *       400:
 *         description: Error
 */
-router.post('/login', Auth.login)
+router.post('/login', User.login)
 
 /**
 * @swagger
-* /auth/register:
+* /user/register:
 *   post:
 *     summary: register to server
-*     tags: [Auth Api]
+*     tags: [User Api]
 *     requestBody:
 *       required: true
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Auth'
+*             $ref: '#/components/schemas/User'
 *             properties:
 *                email:
 *                  type: string
 *                password:
 *                  type: string
+*                fullName:
+*                  type: string
+*                israeliId:
+*                  type: string
+*                phoneNumber:
+*                  type: string
 *             required:
 *               - email
 *               - password
+*               - fullName
+*               - phoneNumber
 *     responses:
 *       200:
 *         description: Register successfully
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Auth'
+*               $ref: '#/components/schemas/User'
 *       400:
 *         description: Error
 */
-router.post('/register', Auth.register)
+router.post('/register', User.register)
 /**
 * @swagger
-* /auth/logout:
+* /user/logout:
 *   get:
 *     summary: Logout from server
-*     tags: [Auth Api]
+*     tags: [User Api]
 *     responses:
 *       200:
 *         description: Logout successfully
 *       400:
 *         description: Error
 */
-router.post('/logout', Auth.logout)
+router.post('/logout', User.logout)
 
 module.exports = router

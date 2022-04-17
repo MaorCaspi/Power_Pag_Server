@@ -8,6 +8,27 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    fullName: {
+        type: String,
+        required: true
+    },
+    israeliId: {
+        type: String,
+        required: false
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    adminPrivilege: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 

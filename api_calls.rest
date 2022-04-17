@@ -55,7 +55,21 @@ Content-Type: application/json
 ###
 
 
-POST http://localhost/auth/register
+POST http://localhost/user/register
+Content-Type: application/json
+
+{
+    "email" : "a@a.com",
+    "password" : "12345",
+    "fullName" : "מאור כספי",
+    "israeliId" : "208460410",
+    "phoneNumber" : "0547929879"
+}
+
+###
+
+
+POST http://localhost/user/login
 Content-Type: application/json
 
 {
@@ -66,18 +80,7 @@ Content-Type: application/json
 ###
 
 
-POST http://localhost/auth/login
-Content-Type: application/json
-
-{
-    "email" : "a@a.com",
-    "password" : "12345"
-}
-
-###
-
-
-POST http://localhost/auth/logout
+POST http://localhost/user/logout
 Content-Type: application/json
 
 {

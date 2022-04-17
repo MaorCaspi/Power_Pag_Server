@@ -42,7 +42,7 @@ app.use('/event',eventRouter)
 const videoRouter = require('./routes/video_routes')
 app.use('/video',videoRouter)
 
-const authRouter = require('./routes/auth_routes')
-app.use('/auth',authRouter)
+const authRouter = require('./routes/user_routes')
+app.use('/user',authRouter)
 
 module.exports = app
