@@ -42,6 +42,9 @@ app.use('/event',eventRouter)
 const videoRouter = require('./routes/video_routes')
 app.use('/video',videoRouter)
 
+const informationRouter = require('./routes/information_routes')
+app.use('/information',informationRouter)
+
 const authRouter = require('./routes/user_routes')
 app.use('/user',authRouter)
 

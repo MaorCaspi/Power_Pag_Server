@@ -55,6 +55,27 @@ Content-Type: application/json
 ###
 
 
+GET http://localhost/information/
+
+###
+
+
+GET http://localhost/information/62614e7f03683570ad03e64e
+
+###
+
+
+POST http://localhost/information
+Content-Type: application/json
+
+{
+    "title" : "מדוע פגים בוכים פחות",
+    "text": "פגים בוכים פחות מתינוקות רגילים, זאת משום שאין להם את ההורמון שאחראי לבכי"
+}
+
+###
+
+
 POST http://localhost/user/register
 Content-Type: application/json
 
