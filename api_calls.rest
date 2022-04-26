@@ -38,18 +38,16 @@ Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNj
 ###
 
 
-GET http://localhost/video/?language=0
-Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
+GET http://localhost/video
 ###
 
 
 POST http://localhost/video
-Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 Content-Type: application/json
 
 {
-    "_id" : "https://www.youtube.com/watch?v=iOe6dI2JhgU&list=RDMM&index=27",
-    "language": 0
+    "hebrewURL" : "8ZlinO9JguE&t",
+    "englishURL": "bG1yLTaxe6w&t"
 }
 
 ###

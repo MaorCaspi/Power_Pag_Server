@@ -1,13 +1,13 @@
 const mongoose = require("mongoose")
 
 const videoSchema = new mongoose.Schema({
-    _id: {//the url
+    hebrewURL: {
         type: String,
-        required: true
+        required: false
     },
-    language: {
-        type: Number,
-        required: true
+    englishURL: {
+        type: String,
+        required: false
     }
 })
 
