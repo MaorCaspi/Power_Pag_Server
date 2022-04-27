@@ -32,17 +32,12 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost/video
-Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
+GET http://localhost/tutorial
 
 ###
 
 
-GET http://localhost/video
-###
-
-
-POST http://localhost/video
+POST http://localhost/tutorial
 Content-Type: application/json
 
 {

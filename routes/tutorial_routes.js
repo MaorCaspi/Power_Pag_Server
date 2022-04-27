@@ -1,28 +1,28 @@
 const express = require('express')
 const router = express.Router()
 
-const Video = require('../controllers/videos')
+const Tutorial = require('../controllers/tutorials')
 
 /**
 * @swagger
 * tags:
-*   name: Video Api
-*   description: The Video API
+*   name: Tutorial Api
+*   description: The Tutorial API
 */
 
 /**
 * @swagger
 * components:
 *   schemas:
-*     Video:
+*     Tutorial:
 *       type: object
 *       properties:
 *         hebrewURL:
 *           type: string
-*           description: The YouTube video url code in Hebrew
+*           description: The YouTube tutorial url code in Hebrew
 *         englishURL:
 *           type: string
-*           description: The YouTube video url code in English
+*           description: The YouTube tutorial url code in English
 *       example:
 *         hebrewURL: 'lWB6p3A1ESE'
 *         englishURL: 'Pi-l9E-BTwQ'
@@ -31,37 +31,37 @@ const Video = require('../controllers/videos')
 
 /**
 * @swagger
-* /video:
+* /tutorial:
 *   get:
-*     summary: Get all videos urls
-*     tags: [Video Api]
+*     summary: Get all tutorials urls
+*     tags: [Tutorial Api]
 *     responses:
 *       200:
-*         description: The videos list.
+*         description: The tutorials list.
 *         content:
 *           application/json:
 *             schema:
 *               type: array
 *               items:
-*                 $ref: '#/components/schemas/Video'
+*                 $ref: '#/components/schemas/Tutorial'
 *       400:
 *         description: Error
 */
-router.get('/',  Video.getVideos)
+router.get('/',  Tutorial.getTutorials)
 
 
 /**
 * @swagger
-* /video:
+* /tutorial:
 *   post:
-*     summary: Add new video
-*     tags: [Video Api]
+*     summary: Add new video tutorial
+*     tags: [Tutorial Api]
 *     requestBody:
 *       required: true
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Video'
+*             $ref: '#/components/schemas/Tutorial'
 *             properties:
 *                hebrewURL:
 *                  type: string
@@ -69,14 +69,14 @@ router.get('/',  Video.getVideos)
 *                  type: string
 *     responses:
 *       200:
-*         description: The video links was saved successfully
+*         description: The tutorial links was saved successfully
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Video'
+*               $ref: '#/components/schemas/Tutorial'
 *       400:
 *         description: Error
 */
-router.post('/',  Video.addNewVideo)
+router.post('/',  Tutorial.addNewTutorial)
 
 module.exports = router

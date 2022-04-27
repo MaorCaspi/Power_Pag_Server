@@ -39,8 +39,8 @@ app.use('/',indexRouter)
 const eventRouter = require('./routes/event_routes')
 app.use('/event',eventRouter)
 
-const videoRouter = require('./routes/video_routes')
-app.use('/video',videoRouter)
+const tutorialRouter = require('./routes/tutorial_routes')
+app.use('/tutorial',tutorialRouter)
 
 const informationRouter = require('./routes/information_routes')
 app.use('/information',informationRouter)

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const videoSchema = new mongoose.Schema({
+const tutorialSchema = new mongoose.Schema({
     hebrewURL: {
         type: String,
         required: false
@@ -11,4 +11,4 @@ const videoSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Video', videoSchema)
+module.exports = mongoose.model('Tutorial', tutorialSchema)
