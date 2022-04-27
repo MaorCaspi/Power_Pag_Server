@@ -18,7 +18,7 @@ const register = async (req, res) => {
     const phoneNumber = req.body.phoneNumber
 
     try{
-        const exists = await User.findOne({'email' : email})
+        const exists = await User.findOne({'israeliId' : israeliId})
         if (exists != null){
             return res.status(400).send({
                 'status': 'fail',
@@ -47,16 +47,16 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    const email = req.body.email.toLowerCase()
+    const israeliId = req.body.israeliId
     const password = req.body.password
-    if (email == null || password == null) return sendError(res,400,'wrong email or password')
+    if (israeliId == null || password == null) return sendError(res,400,'Wrong Id or password')
     
     try{
-        const user = await User.findOne({'email' : email })
-        if (user == null) return sendError(res,400,'wrong email or password')
+        const user = await User.findOne({'israeliId' : israeliId })
+        if (user == null) return sendError(res,400,'Wrong Id or password')
 
         const match = await bcrypt.compare(password, user.password)
-        if (!match) return sendError(res,400,'wrong email or password')
+        if (!match) return sendError(res,400,'Wrong ID or password')
 
         const accessToken = await jwt.sign(
             {'id':user._id},
@@ -68,7 +68,6 @@ const login = async (req, res) => {
     }catch(err){
         return sendError(res,400,err.message)
     }
-
 }
 
 const logout = async (req, res) => {

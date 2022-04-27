@@ -87,7 +87,7 @@ POST http://localhost/user/login
 Content-Type: application/json
 
 {
-    "email" : "a@a.com",
+    "israeliId" : "208460410",
     "password" : "12345"
 }
 

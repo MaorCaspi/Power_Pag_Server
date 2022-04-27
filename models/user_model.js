@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     },
     israeliId: {
         type: String,
-        required: false
+        required: true
     },
     phoneNumber: {
         type: String,

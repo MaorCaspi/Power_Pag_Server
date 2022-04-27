@@ -20,6 +20,7 @@ const User = require('../controllers/users')
 *         - email
 *         - password
 *         - fullName
+*         - israeliId
 *         - phoneNumber
 *       properties:
 *         email:
@@ -61,12 +62,12 @@ const User = require('../controllers/users')
 *           schema:
 *             $ref: '#/components/schemas/User'
 *             properties:
-*                email:
+*                israeliId:
 *                  type: string
 *                password:
 *                  type: string
 *             required:
-*               - email
+*               - israeliId
 *               - password
 *     responses:
 *       200:
@@ -107,6 +108,7 @@ router.post('/login', User.login)
 *               - email
 *               - password
 *               - fullName
+*               - israeliId
 *               - phoneNumber
 *     responses:
 *       200:
@@ -127,7 +129,7 @@ router.post('/register', User.register)
 *     tags: [User Api]
 *     responses:
 *       200:
-*         description: Logout successfullyreturn the full name and the user's permission
+*         description: Logout successfully
 *       400:
 *         description: Error
 */
