@@ -17,9 +17,13 @@ const Information = require('../controllers/informations')
 *     Information:
 *       type: object
 *       required:
+*         - subject
 *         - title
 *         - text
 *       properties:
+*         subject:
+*           type: string
+*           description: The information subject 
 *         title:
 *           type: string
 *           description: The information title 
@@ -27,6 +31,7 @@ const Information = require('../controllers/informations')
 *           type: string
 *           description: The information text
 *       example:
+*         subject: 'General'
 *         title: 'Why preterm babies cry less?'
 *         text: 'Premature babies cry less than normal babies, this is because they do not have the hormone that is responsible for crying'
 */
@@ -40,7 +45,7 @@ const Information = require('../controllers/informations')
 *     tags: [Information Api]
 *     responses:
 *       200:
-*         description: The informations list
+*         description: The informations list grouped by subject
 *         content:
 *           application/json:
 *             schema:
@@ -54,7 +59,7 @@ router.get('/', Information.getInformations)
 
 /**
 * @swagger
-* /information/{id}:
+* /information/getById/{id}:
 *   get:
 *     summary: Get information by ID
 *     tags: [Information Api]
@@ -75,7 +80,7 @@ router.get('/', Information.getInformations)
 *       400:
 *         description: Error
 */
-router.get('/:id', Information.getInformationById)
+router.get('/getById/:id', Information.getInformationById)
 
 /**
 * @swagger
@@ -90,11 +95,14 @@ router.get('/:id', Information.getInformationById)
 *           schema:
 *             $ref: '#/components/schemas/Information'
 *             properties:
+*                subject:
+*                  type: string
 *                title:
 *                  type: string
 *                text:
 *                  type: string
 *             required:
+*               - subject
 *               - title
 *               - text
 *     responses:
@@ -108,5 +116,49 @@ router.get('/:id', Information.getInformationById)
 *         description: Error
 */
 router.post('/', Information.addNewInformation)
+
+/**
+* @swagger
+* /information/getSubjects:
+*   get:
+*     summary: Get all information subjects
+*     tags: [Information Api]
+*     responses:
+*       200:
+*         description: The information subjects list
+*         content:
+*           application/json:
+*             schema:
+*               type: array
+*       400:
+*         description: Error
+*/
+router.get('/getSubjects/', Information.getInformationSubjects)
+
+
+/**
+* @swagger
+* /information/getBySubject/{id}:
+*   get:
+*     summary: Get informations by subject
+*     tags: [Information Api]
+*     parameters:
+*       - in: path
+*         name: subject
+*         schema:
+*           type: string
+*         required: true
+*         description: The informations subject
+*     responses:
+*       200:
+*         description: The request informations
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Information'
+*       400:
+*         description: Error
+*/
+router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 
 module.exports = router

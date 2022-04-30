@@ -53,7 +53,7 @@ GET http://localhost/information/
 ###
 
 
-GET http://localhost/information/62614e7f03683570ad03e64e
+GET http://localhost/information/getById/626cf0e6273d759a7ab352c2
 
 ###
 
@@ -62,10 +62,20 @@ POST http://localhost/information
 Content-Type: application/json
 
 {
-    "title" : "מדוע פגים בוכים פחות",
-    "text": "פגים בוכים פחות מתינוקות רגילים, זאת משום שאין להם את ההורמון שאחראי לבכי"
+    "subject": "כללי",
+    "title" : "מדוע פגים לא יודעים קרוא וכתוב",
+    "text": "כי הם תינוקות אחרי הכל"
 }
 
+###
+
+
+GET http://localhost/information/getSubjects
+
+###
+
+
+GET http://localhost/information/getBySubject/כללי
 ###
 
 
