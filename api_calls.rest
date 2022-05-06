@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "name" : "הדרכת חיתולים",
-    "dateAndTime" : "2022-04-30T13:00Z",
+    "dateAndTime" : "2022-06-30T13:00Z",
     "place" : "בניין א' קומה 5 בחדר 435",
     "description" : "כולכם מוזמנים להדרכת חיתולים חגיגית"
 }
