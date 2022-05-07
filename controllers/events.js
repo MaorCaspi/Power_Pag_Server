@@ -20,8 +20,8 @@ const getEvents = async (req, res) => {
 const getEventById = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
     try {
-        events = await Event.findOne({"_id" : req.params.id}, {"__v":0});
-        res.status(200).send(events)
+        event = await Event.findById({"_id" : req.params.id}, {"__v":0});
+        res.status(200).send(event)
     } catch (err) {
         res.status(400).send({
             'status': 'fail',

@@ -16,7 +16,7 @@ const getInformations= async (req, res) => {
 const getInformationById = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
     try {
-        information = await Information.findOne({"_id" : req.params.id}, {"__v":0});
+        information = await Information.findById({"_id" : req.params.id}, {"__v":0});
         res.status(200).send(information);
     } catch (err) {
         res.status(400).send({
