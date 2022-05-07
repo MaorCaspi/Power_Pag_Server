@@ -4,11 +4,7 @@ const router = express.Router()
 const Event = require('../controllers/events')
 const authenticate = require('../common/auth_middleware')
 
-const multer = require('multer')
-//multer options
-const upload = multer({
-    dest: '../images'
-    })
+const upload = require('../middlewares/upload')
 
 /**
 * @swagger
@@ -126,6 +122,6 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 *       400:
 *         description: Error
 */
-router.post('/', /*authenticate,*/ upload.single('upload'), Event.addNewEvent)
+router.post('/', /*authenticate,*/ upload.single('image') ,Event.addNewEvent)
 
 module.exports = router

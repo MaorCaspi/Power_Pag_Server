@@ -33,6 +33,8 @@ db.once('open',()=>{console.log('db connected!')})
 
 const port = process.env.PORT
 
+app.use('/uploads',express.static('uploads'));
+
 const indexRouter = require('./routes/index')
 app.use('/',indexRouter)
 
