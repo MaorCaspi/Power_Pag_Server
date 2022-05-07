@@ -43,7 +43,7 @@ const upload = require('../middlewares/upload')
 *         dateAndTime: '2022-04-30T13:00Z'
 *         place: 'Building A, 5th floor, room 435'
 *         description: 'Some description text'
-*         image: 'http://power-pag.cs.colman.ac.il/uploads/1651916818030-test.jpg'
+*         image: 'http://power-pag.cs.colman.ac.il/uploads/1651927486466-diapers.jpg'
 */
 
 
