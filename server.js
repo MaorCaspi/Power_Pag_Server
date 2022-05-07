@@ -14,7 +14,7 @@ if (process.env.NODE_ENV == "development") {
                 title: "Power Pag Library API",
                 version: "1.0.0",
             },
-            servers: [{url: "http://power-pag.cs.colman.ac.il",},],
+            servers: [{url: process.env.SERVER_URL,},],
         },
         apis: ["./routes/*.js"],
     };

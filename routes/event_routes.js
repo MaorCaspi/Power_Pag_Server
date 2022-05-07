@@ -35,11 +35,15 @@ const upload = require('../middlewares/upload')
 *         dateAndTime:
 *           type: string
 *           description: The event date and time
+*         image:
+*           type: string
+*           description: The event photo url
 *       example:
 *         name: 'Training diapers'
 *         dateAndTime: '2022-04-30T13:00Z'
 *         place: 'Building A, 5th floor, room 435'
 *         description: 'Some description text'
+*         image: 'http://power-pag.cs.colman.ac.il/uploads/1651916818030-test.jpg'
 */
 
 
@@ -92,7 +96,7 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 * @swagger
 * /event:
 *   post:
-*     summary: Add new event
+*     summary: Add new event, option- attach a png/jpg/jpeg picture with up to 4 MB size
 *     tags: [Event Api]
 *     requestBody:
 *       required: true

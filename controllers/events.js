@@ -40,7 +40,7 @@ const addNewEvent = (req, res) => {
             dateAndTime: new Date(req.body.dateAndTime),
             place: req.body.place,
             description: req.body.description,
-            image: image.replace('\\','/')
+            image: process.env.SERVER_URL+"/"+image.replace('\\','/')
         })
     }
     else{
