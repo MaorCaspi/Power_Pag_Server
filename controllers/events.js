@@ -32,15 +32,25 @@ const getEventById = async (req, res) => {
 
 const addNewEvent = (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
-    console.log(req.file);
-    const { path: image } = req.file;
-    const event = Event({
-        name: req.body.name,
-        dateAndTime: new Date(req.body.dateAndTime),
-        place: req.body.place,
-        description: req.body.description,
-        image: image.replace('\\','/')
-    })
+    var event;
+    if(req.file){
+        const { path: image } = req.file;
+        event = Event({
+            name: req.body.name,
+            dateAndTime: new Date(req.body.dateAndTime),
+            place: req.body.place,
+            description: req.body.description,
+            image: image.replace('\\','/')
+        })
+    }
+    else{
+        event = Event({
+            name: req.body.name,
+            dateAndTime: new Date(req.body.dateAndTime),
+            place: req.body.place,
+            description: req.body.description
+        })
+    }
 
     event.save((error, newEvent) => {
         if (error) {
