@@ -28,11 +28,23 @@ const getInformationById = async (req, res) => {
 
 const addNewInformation = (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
-    const information = Information({
-        subject: req.body.subject,
-        title: req.body.title,
-        text: req.body.text
-    })
+    var information;
+    if(req.file){
+        const { path: image } = req.file;
+        information = Information({
+            subject: req.body.subject,
+            title: req.body.title,
+            text: req.body.text,
+            image: process.env.SERVER_URL+"/"+image.replace('\\','/')
+        })
+    }
+    else{
+        information = Information({
+            subject: req.body.subject,
+            title: req.body.title,
+            text: req.body.text
+        })
+    }
 
     information.save((error, newInformation) => {
         if (error) {

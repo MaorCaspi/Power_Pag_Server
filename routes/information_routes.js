@@ -30,10 +30,14 @@ const Information = require('../controllers/informations')
 *         text:
 *           type: string
 *           description: The information text
+*         image:
+*           type: string
+*           description: The information photo url
 *       example:
 *         subject: 'General'
 *         title: 'Why preterm babies cry less?'
 *         text: 'Premature babies cry less than normal babies, this is because they do not have the hormone that is responsible for crying'
+*         image: 'http://power-pag.cs.colman.ac.il/uploads/1651927486466-diapers.jpg'
 */
 
 
@@ -86,7 +90,7 @@ router.get('/getById/:id', Information.getInformationById)
 * @swagger
 * /information:
 *   post:
-*     summary: Add new information
+*     summary: Add new information, option- attach a png/jpg/jpeg picture with up to 4 MB size
 *     tags: [Information Api]
 *     requestBody:
 *       required: true
