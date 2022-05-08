@@ -128,4 +128,7 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 */
 router.post('/', /*authenticate,*/ upload.single('image') ,Event.addNewEvent)
 
+//TODO!!
+router.post('/registerToEvent', Event.registerToEvent)
+
 module.exports = router

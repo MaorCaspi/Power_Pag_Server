@@ -29,7 +29,13 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    registeredEvents: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Event"
+        }
+      ]
 })
 
 module.exports = mongoose.model('User', userSchema)

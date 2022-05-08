@@ -12,7 +12,7 @@ Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNj
 ###
 
 
-GET http://localhost/event/624d6f664d0198d93326288a
+GET http://localhost/event/627669beb16d4dcd03da26bb
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 
 ###
@@ -86,7 +86,7 @@ Content-Type: application/json
     "email" : "a@a.com",
     "password" : "12345",
     "fullName" : "מאור כספי",
-    "israeliId" : "208460410",
+    "israeliId" : "208460419",
     "phoneNumber" : "0547929879"
 }
 
@@ -104,9 +104,15 @@ Content-Type: application/json
 ###
 
 
-POST http://localhost/user/logout
+GET http://localhost/user/getRegisteredEventsByUserId/62695898b0804e54fbaf68d4
+
+###
+
+
+POST http://localhost/event/registerToEvent
 Content-Type: application/json
 
 {
-
+    "eventId" : "627669beb16d4dcd03da26bb",
+    "userId" : "62695898b0804e54fbaf68d4"
 }

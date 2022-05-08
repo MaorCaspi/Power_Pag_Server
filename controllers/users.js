@@ -36,7 +36,7 @@ const register = async (req, res) => {
             'phoneNumber' : phoneNumber
         })
         newUser = await user.save();
-        res.status(200).send({'fullName' : fullName, 'adminPrivilege' : user.adminPrivilege})
+        res.status(200).send({'fullName' : fullName, 'adminPrivilege' : user.adminPrivilege, 'objectId' : newUser._id})
 
     }catch(err){
         res.status(400).send({
@@ -63,22 +63,32 @@ const login = async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn: process.env.JWT_TOKEN_EXPIRATION}
             )
-        res.status(200).send({/*'accessToken' : accessToken,*/'fullName' : user.fullName, 'adminPrivilege' : user.adminPrivilege})
+        res.status(200).send({/*'accessToken' : accessToken,*/'fullName' : user.fullName, 'adminPrivilege' : user.adminPrivilege, 'objectId' : user._id})
 
     }catch(err){
         return sendError(res,400,err.message)
     }
 }
 
-const logout = async (req, res) => {
-    res.status(400).send({
-        'status': 'fail',
-        'error': 'not implemented'
-    })
+const getRegisteredEventsByUserId = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    var dateNow = new Date();
+     dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
+
+    try {
+        events = await User.findById({"_id" : req.params.id}, {"registeredEvents":1}).populate({
+            path:"registeredEvents", match:{dateAndTime: { $gt: dateNow }}, select:["name","place","dateAndTime"]});
+        res.status(200).send(events)
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
 }
 
 module.exports = {
     login,
     register,
-    logout
+    getRegisteredEventsByUserId
 }

@@ -123,9 +123,9 @@ router.post('/login', User.login)
 router.post('/register', User.register)
 /**
 * @swagger
-* /user/logout:
+* /user/getRegisteredEventsByUserId:
 *   get:
-*     summary: Logout from server
+*     summary: Logout from server----------------------------------------------------------------------------!!!!!!!!!!TODO
 *     tags: [User Api]
 *     responses:
 *       200:
@@ -133,6 +133,6 @@ router.post('/register', User.register)
 *       400:
 *         description: Error
 */
-router.post('/logout', User.logout)
+router.get('/getRegisteredEventsByUserId/:id', User.getRegisteredEventsByUserId)
 
 module.exports = router
