@@ -11,6 +11,7 @@ const sendError = (res,code,msg)=>{
 }
 
 const register = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
     const email = req.body.email.toLowerCase()
     const password = req.body.password
     const fullName = req.body.fullName
@@ -47,6 +48,7 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
     const israeliId = req.body.israeliId
     const password = req.body.password
     if (israeliId == null || password == null) return sendError(res,400,'Wrong Id or password')
