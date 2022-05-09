@@ -1,7 +1,6 @@
 const Tutorial = require('../models/tutorial_model')
 
 const getTutorials= async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     try {
         tutorials = await Tutorial.find({}, {"__v":0});
         res.status(200).send(tutorials);
@@ -14,7 +13,6 @@ const getTutorials= async (req, res) => {
 }
 
 const addNewTutorial = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     const tutorial = Tutorial({
         hebrewURL: req.body.hebrewURL,
         englishURL: req.body.englishURL

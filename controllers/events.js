@@ -2,7 +2,6 @@ const Event = require('../models/event_model')
 const User = require('../models/user_model')
 
 const getEvents = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
 
      var dateNow = new Date();
      dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
@@ -20,7 +19,6 @@ const getEvents = async (req, res) => {
 }
 
 const getEventById = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         event = await Event.findById({"_id" : req.params.id}, {"__v":0}).populate({
             path:"participants", select:["fullName","email","phoneNumber","israeliId"]});
@@ -34,7 +32,6 @@ const getEventById = async (req, res) => {
 }
 
 const addNewEvent = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     var event;
     if(req.file){
         const { path: image } = req.file;
@@ -68,7 +65,6 @@ const addNewEvent = (req, res) => {
 }
 
 const registerToEvent = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $addToSet: { participants: req.body.userId } },
         { new: true, useFindAndModify: false });

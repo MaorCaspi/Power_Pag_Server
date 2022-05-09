@@ -14,7 +14,6 @@ const getInformations= async (req, res) => {
 }
 
 const getInformationById = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         information = await Information.findById({"_id" : req.params.id}, {"__v":0});
         res.status(200).send(information);
@@ -27,7 +26,6 @@ const getInformationById = async (req, res) => {
 }
 
 const addNewInformation = (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     var information;
     if(req.file){
         const { path: image } = req.file;
@@ -59,7 +57,6 @@ const addNewInformation = (req, res) => {
 }
 
 const getInformationSubjects = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         subjects = await Information.find().distinct("subject");
         res.status(200).send(subjects);
@@ -72,7 +69,6 @@ const getInformationSubjects = async (req, res) => {
 }
 
 const getInformationsBySubject = async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         informations = await Information.find({"subject" : req.params.subject}, {"__v":0});
         res.status(200).send(informations);
