@@ -1,8 +1,12 @@
 const dotenv = require('dotenv').config()
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: false
+}));
 
 if (process.env.NODE_ENV == "development") {
     const swaggerUI = require("swagger-ui-express")
@@ -24,16 +28,13 @@ if (process.env.NODE_ENV == "development") {
 
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authoriztion");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     if(req.method === "OPTIONS"){
         res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
         return res.status(200).json({});
     }
     next();
 });
-
-app.use(bodyParser.urlencoded({extended:true, limit: '1m'}))
-app.use(bodyParser.json())
 
 mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser : true})
 const db = mongoose.connection
