@@ -41,6 +41,9 @@ const User = require('../controllers/users')
 *         adminPrivilege:
 *           type: boolian
 *           description: True = Admin Privilege, the defult is false
+*         registeredEvents:
+*           type: array[objectid]
+*           description: The object IDs of events registered by the user
 *       example:
 *         email: 'test@gmail.com'
 *         password: '123456'
@@ -123,13 +126,20 @@ router.post('/login', User.login)
 router.post('/register', User.register)
 /**
 * @swagger
-* /user/getRegisteredEventsByUserId:
+* /user/getRegisteredEventsByUserId/{id}:
 *   get:
-*     summary: Logout from server----------------------------------------------------------------------------!!!!!!!!!!TODO
+*     summary: Get registered events by user object Id, sorted by the date and time in ascending order
 *     tags: [User Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The user object id
 *     responses:
 *       200:
-*         description: Logout successfully
+*         description: Success
 *       400:
 *         description: Error
 */

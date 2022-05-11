@@ -38,6 +38,9 @@ const upload = require('../middlewares/upload')
 *         image:
 *           type: string
 *           description: The event photo url
+*         participants:
+*           type: array[objectid]
+*           description: The object IDs of users who register to the event
 *       example:
 *         name: 'Training diapers'
 *         dateAndTime: '2022-04-30T13:00Z'
@@ -128,7 +131,34 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 */
 router.post('/', /*authenticate,*/ upload.single('image') ,Event.addNewEvent)
 
-//TODO!!
+/**
+* @swagger
+* /event/registerToEvent:
+*   post:
+*     summary: Register user to event
+*     tags: [Event Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                eventId:
+*                  type: string
+*                userId:
+*                  type: string
+*             required:
+*               - eventId
+*               - userId
+*     responses:
+*       200:
+*         description: Register to event successfully
+*         content:
+*           application/json:
+*             schema:
+*       400:
+*         description: Error
+*/
 router.post('/registerToEvent', Event.registerToEvent)
 
 module.exports = router

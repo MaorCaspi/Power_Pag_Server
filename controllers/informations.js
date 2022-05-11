@@ -1,7 +1,6 @@
 const Information = require('../models/information_model')
 
 const getInformations= async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
     try {
         informations = await Information.find({}, {"__v":0}).sort({subject: 1});
         res.status(200).send(informations);
@@ -27,20 +26,22 @@ const getInformationById = async (req, res) => {
 
 const addNewInformation = (req, res) => {
     var information;
+    const { subject, title, text} = req.body;
+    console.log(req.body)
     if(req.file){
         const { path: image } = req.file;
         information = Information({
-            subject: req.body.subject,
-            title: req.body.title,
-            text: req.body.text,
+            subject,
+            title,
+            text,
             image: process.env.SERVER_URL+"/"+image.replace('\\','/')
         })
     }
     else{
         information = Information({
-            subject: req.body.subject,
-            title: req.body.title,
-            text: req.body.text
+            subject,
+            title,
+            text
         })
     }
 
