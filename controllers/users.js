@@ -86,8 +86,37 @@ const getRegisteredEventsByUserId = async (req, res) => {
     }
 }
 
+const getMyBabyDataByUserId = async (req, res) => {
+    try {
+        myBabyData = await User.findById({"_id" : req.params.id}, {"myBabyData":1});
+        res.status(200).send(myBabyData)
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
+const addMyBabyDataByUserId = async (req, res) => {
+    const {userObjectId, gender, dateOfBirth, birthWeek, birthWeight, firstHoldDate, firstKangarooDate, oneKiloDate, twoKiloDate, independentBreathingDate, firstCribDate, firstBottleDate, firstFeedDate, notNeedZondaDate, releaseHomeDate} = req.body;
+
+    try {
+        await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.gender" : gender, "myBabyData.dateOfBirth" : dateOfBirth, "myBabyData.birthWeek" : birthWeek, "myBabyData.birthWeight" : birthWeight, "myBabyData.firstHoldDate" : firstHoldDate, "myBabyData.firstKangarooDate" : firstKangarooDate, "myBabyData.oneKiloDate" : oneKiloDate, "myBabyData.twoKiloDate" : twoKiloDate, "myBabyData.independentBreathingDate" : independentBreathingDate, "myBabyData.firstCribDate" : firstCribDate, "myBabyData.firstBottleDate" : firstBottleDate, "myBabyData.firstFeedDate" : firstFeedDate, "myBabyData.notNeedZondaDate" : notNeedZondaDate, "myBabyData.releaseHomeDate" : releaseHomeDate},
+        { new: true, useFindAndModify: false });
+        res.status(200).send("Successful")
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     login,
     register,
-    getRegisteredEventsByUserId
+    getRegisteredEventsByUserId,
+    getMyBabyDataByUserId,
+    addMyBabyDataByUserId
 }

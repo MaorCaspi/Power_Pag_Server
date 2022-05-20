@@ -124,6 +124,7 @@ router.post('/login', User.login)
 *         description: Error
 */
 router.post('/register', User.register)
+
 /**
 * @swagger
 * /user/getRegisteredEventsByUserId/{id}:
@@ -144,5 +145,92 @@ router.post('/register', User.register)
 *         description: Error
 */
 router.get('/getRegisteredEventsByUserId/:id', User.getRegisteredEventsByUserId)
+
+/**
+* @swagger
+* /user/getMyBabyDataByUserId/{id}:
+*   get:
+*     summary: Get "My baby" data by user object Id
+*     tags: [User Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*           default: 625c28e22c082ff25282e43e
+*         required: true
+*         description: The user object id
+*     responses:
+*       200:
+*         description: Success
+*       400:
+*         description: Error
+*/
+router.get('/getMyBabyDataByUserId/:id', User.getMyBabyDataByUserId)
+
+/**
+* @swagger
+* /user/addMyBabyDataByUserId:
+*   post:
+*     summary: Add or edit "My baby" data to specific user by user object Id
+*     tags: [User Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                userObjectId:
+*                  type: string
+*                  default: 625c28e22c082ff25282e43e
+*                gender:
+*                  type: string
+*                  default: Male
+*                dateOfBirth:
+*                  type: string
+*                  default: 2022-06-30
+*                birthWeek:
+*                  type: number
+*                  default: 28.5
+*                birthWeight:
+*                  type: number
+*                  default: 1.14
+*                firstHoldDate:
+*                  type: string
+*                  default: 2022-06-30
+*                firstKangarooDate:
+*                  type: string
+*                  default: 2022-06-30
+*                oneKiloDate:
+*                  type: string
+*                  default: 2022-06-30
+*                twoKiloDate:
+*                  type: string
+*                  default: 2022-06-30
+*                independentBreathingDate:
+*                  type: string
+*                  default: 2022-06-30
+*                firstCribDate:
+*                  type: string
+*                  default: 2022-06-30
+*                firstBottleDate:
+*                  type: string
+*                  default: 2022-06-30
+*                firstFeedDate:
+*                  type: string
+*                  default: 2022-06-30
+*                notNeedZondaDate:
+*                  type: string
+*                  default: 2022-06-30
+*                releaseHomeDate:
+*                  type: string
+*                  default: 2022-06-30
+*     responses:
+*       200:
+*         description: Success
+*       400:
+*         description: Error
+*/
+router.post('/addMyBabyDataByUserId', User.addMyBabyDataByUserId)
 
 module.exports = router

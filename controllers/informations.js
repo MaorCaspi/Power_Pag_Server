@@ -27,7 +27,6 @@ const getInformationById = async (req, res) => {
 const addNewInformation = (req, res) => {
     var information;
     const { subject, title, text} = req.body;
-    console.log(req.body)
     if(req.file){
         const { path: image } = req.file;
         information = Information({

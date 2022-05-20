@@ -53,7 +53,7 @@ GET http://localhost/information/
 ###
 
 
-GET http://localhost/information/getById/626cf0e6273d759a7ab352c2
+GET http://localhost/information/getById/627e4cb72efdac3131ddd758
 
 ###
 
@@ -62,8 +62,8 @@ POST http://localhost/information
 Content-Type: application/json
 
 {
-    "subject": "כללי",
-    "title" : "מדוע פגים לא יודעים קרוא וכתוב",
+    "subject": "מידע ראשוני",
+    "title" : "פרטי התקשרות",
     "text": "כי הם תינוקות אחרי הכל"
 }
 
@@ -103,6 +103,33 @@ Content-Type: application/json
 
 ###
 
+
+GET http://localhost/user/getMyBabyDataByUserId/625c28e22c082ff25282e43e
+
+###
+
+POST http://localhost/user/addMyBabyDataByUserId
+Content-Type: application/json
+
+{
+    "userObjectId" : "625c28e22c082ff25282e43e",
+    "gender" : "Male",
+    "dateOfBirth" : "2022-06-30",
+    "birthWeek" : 28.5,
+    "birthWeight" : 1.954,
+    "firstHoldDate" : "2022-06-30",
+    "firstKangarooDate" : "2022-06-30",
+    "oneKiloDate" : "2022-06-30",
+    "twoKiloDate" : "2022-06-30",
+    "independentBreathingDate" : "2022-06-30",
+    "firstCribDate" : "2022-06-30",
+    "firstBottleDate" : "2022-06-30",
+    "firstFeedDate" : "2022-06-30",
+    "notNeedZondaDate" : "2022-06-30",
+    "releaseHomeDate" : "2022-06-30"
+}
+
+###
 
 GET http://localhost/user/getRegisteredEventsByUserId/62695898b0804e54fbaf68d4
 
