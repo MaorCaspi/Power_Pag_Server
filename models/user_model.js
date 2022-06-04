@@ -51,6 +51,10 @@ const userSchema = new mongoose.Schema({
         }
     }],
     myBabyData: {
+        image: {
+            type: String,
+            required: false
+        },
         gender: {
             type: String,
             required: false

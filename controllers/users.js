@@ -102,6 +102,10 @@ const addMyBabyDataByUserId = async (req, res) => {
     const {userObjectId, gender, dateOfBirth, birthWeek, birthWeight, firstHoldDate, firstKangarooDate, oneKiloDate, twoKiloDate, independentBreathingDate, firstCribDate, firstBottleDate, firstFeedDate, notNeedZondaDate, releaseHomeDate} = req.body;
 
     try {
+        if(req.file){
+            const { path: image } = req.file;
+            await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.image" : process.env.SERVER_URL+"/"+image.replace('\\','/')},{ new: true, useFindAndModify: false });
+        }
         await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.gender" : gender, "myBabyData.dateOfBirth" : dateOfBirth, "myBabyData.birthWeek" : birthWeek, "myBabyData.birthWeight" : birthWeight, "myBabyData.firstHoldDate" : firstHoldDate, "myBabyData.firstKangarooDate" : firstKangarooDate, "myBabyData.oneKiloDate" : oneKiloDate, "myBabyData.twoKiloDate" : twoKiloDate, "myBabyData.independentBreathingDate" : independentBreathingDate, "myBabyData.firstCribDate" : firstCribDate, "myBabyData.firstBottleDate" : firstBottleDate, "myBabyData.firstFeedDate" : firstFeedDate, "myBabyData.notNeedZondaDate" : notNeedZondaDate, "myBabyData.releaseHomeDate" : releaseHomeDate},
         { new: true, useFindAndModify: false });
         res.status(200).send("Successful")
@@ -129,8 +133,6 @@ const addMyBabyGrowthDataByUserId = async (req, res) => {
 }
 
 const getMyBabyGrowthDataByUserId = async (req, res) => {
-    var dateNow = new Date();
-    dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
     try {
         myBabyGrowthData = await User.findById({"_id" : req.params.id}, {"myBabyGrowth":1});
         res.status(200).send(myBabyGrowthData)
