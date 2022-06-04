@@ -113,10 +113,41 @@ const addMyBabyDataByUserId = async (req, res) => {
     }
 }
 
+const addMyBabyGrowthDataByUserId = async (req, res) => {
+    const {userObjectId, measurementDate, weight, headCircumference} = req.body;
+
+    try {
+        const growth= {measurementDate: measurementDate, weight:weight, headCircumference:headCircumference};
+        await User.findByIdAndUpdate({"_id" : userObjectId},{ $push: { myBabyGrowth: growth } });
+        res.status(200).send("Successful");
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
+const getMyBabyGrowthDataByUserId = async (req, res) => {
+    var dateNow = new Date();
+    dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
+    try {
+        myBabyGrowthData = await User.findById({"_id" : req.params.id}, {"myBabyGrowth":1});
+        res.status(200).send(myBabyGrowthData)
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     login,
     register,
     getRegisteredEventsByUserId,
     getMyBabyDataByUserId,
-    addMyBabyDataByUserId
+    addMyBabyDataByUserId,
+    getMyBabyGrowthDataByUserId,
+    addMyBabyGrowthDataByUserId
 }

@@ -131,6 +131,23 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost/user/addMyBabyGrowthDataByUserId
+Content-Type: application/json
+
+{
+    "userObjectId" : "625c28e22c082ff25282e43e",
+    "measurementDate" : "2022-06-17",
+    "weight" : 21.11,
+    "headCircumference" : 0.954223
+}
+
+###
+
+
+GET http://localhost/user/getMyBabyGrowthDataByUserId/625c28e22c082ff25282e43e
+
+###
+
 GET http://localhost/user/getRegisteredEventsByUserId/62695898b0804e54fbaf68d4
 
 ###

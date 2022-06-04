@@ -233,4 +233,58 @@ router.get('/getMyBabyDataByUserId/:id', User.getMyBabyDataByUserId)
 */
 router.post('/addMyBabyDataByUserId', User.addMyBabyDataByUserId)
 
+/**
+* @swagger
+* /user/addMyBabyGrowthDataByUserId:
+*   post:
+*     summary: Add "My baby Growth" data to specific user by user object Id
+*     tags: [User Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                userObjectId:
+*                  type: string
+*                  default: 625c28e22c082ff25282e43e
+*                measurementDate:
+*                  type: string
+*                  default: 2022-06-30
+*                weight:
+*                  type: number
+*                  default: 1.02
+*                headCircumference:
+*                  type: number
+*                  default: 5.03
+*     responses:
+*       200:
+*         description: Success
+*       400:
+*         description: Error
+*/
+router.post('/addMyBabyGrowthDataByUserId', User.addMyBabyGrowthDataByUserId)
+
+/**
+* @swagger
+* /user/getMyBabyGrowthDataByUserId/{id}:
+*   get:
+*     summary: Get "My baby Growth" array of data by user object Id
+*     tags: [User Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*           default: 625c28e22c082ff25282e43e
+*         required: true
+*         description: The user object id
+*     responses:
+*       200:
+*         description: Success
+*       400:
+*         description: Error
+*/
+router.get('/getMyBabyGrowthDataByUserId/:id', User.getMyBabyGrowthDataByUserId)
+
 module.exports = router

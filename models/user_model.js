@@ -36,6 +36,20 @@ const userSchema = new mongoose.Schema({
           ref: "Event"
         }
     ],
+    myBabyGrowth: [{
+        measurementDate: {
+            type: Date,
+            required: true
+        },
+        weight: {
+            type: mongoose.Decimal128,
+            required: false
+        },
+        headCircumference: {
+            type: mongoose.Decimal128,
+            required: false
+        }
+    }],
     myBabyData: {
         gender: {
             type: String,
