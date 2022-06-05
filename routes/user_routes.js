@@ -3,6 +3,8 @@ const router = express.Router()
 
 const User = require('../controllers/users')
 
+const upload = require('../middlewares/upload')
+
 /**
 * @swagger
 * tags:
@@ -231,7 +233,7 @@ router.get('/getMyBabyDataByUserId/:id', User.getMyBabyDataByUserId)
 *       400:
 *         description: Error
 */
-router.post('/addMyBabyDataByUserId', User.addMyBabyDataByUserId)
+router.post('/addMyBabyDataByUserId', upload.single('image'), User.addMyBabyDataByUserId)
 
 /**
 * @swagger

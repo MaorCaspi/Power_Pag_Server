@@ -3,6 +3,8 @@ const router = express.Router()
 
 const Information = require('../controllers/informations')
 
+const upload = require('../middlewares/upload')
+
 /**
 * @swagger
 * tags:
@@ -119,7 +121,7 @@ router.get('/getById/:id', Information.getInformationById)
 *       400:
 *         description: Error
 */
-router.post('/', Information.addNewInformation)
+router.post('/', upload.single('image'), Information.addNewInformation)
 
 /**
 * @swagger
