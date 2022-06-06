@@ -79,9 +79,25 @@ const registerToEvent = async (req, res) => {
     }
 }
 
+const unregisterFromEvent = async (req, res) => {
+    try {
+        await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $pull: { participants: req.body.userId } },
+        { new: false, useFindAndModify: false });
+        await User.findByIdAndUpdate({"_id" : req.body.userId },{ $pull: { registeredEvents: req.body.eventId } },
+        { new: false, useFindAndModify: false });
+        res.status(200).send("Registration was cancel successful")
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getEvents,
     getEventById,
     addNewEvent,
-    registerToEvent
+    registerToEvent,
+    unregisterFromEvent
 }

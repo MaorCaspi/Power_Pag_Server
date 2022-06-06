@@ -161,4 +161,34 @@ router.post('/', /*authenticate,*/ upload.single('image') ,Event.addNewEvent)
 */
 router.post('/registerToEvent', Event.registerToEvent)
 
+/**
+* @swagger
+* /event/unregisterFromEvent:
+*   post:
+*     summary: Cancel a registration of user to event
+*     tags: [Event Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                eventId:
+*                  type: string
+*                userId:
+*                  type: string
+*             required:
+*               - eventId
+*               - userId
+*     responses:
+*       200:
+*         description: Registration was cancel successful
+*         content:
+*           application/json:
+*             schema:
+*       400:
+*         description: Error
+*/
+router.post('/unregisterFromEvent', Event.unregisterFromEvent)
+
 module.exports = router

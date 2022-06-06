@@ -12,7 +12,7 @@ Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNj
 ###
 
 
-GET http://localhost/event/627669beb16d4dcd03da26bb
+GET http://localhost/event/629ca62a9a881087f383dbff
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 
 ###
@@ -157,6 +157,17 @@ POST http://localhost/event/registerToEvent
 Content-Type: application/json
 
 {
-    "eventId" : "627669beb16d4dcd03da26bb",
-    "userId" : "62695898b0804e54fbaf68d4"
+    "eventId" : "629ca62a9a881087f383dbff",
+    "userId" : "625c28e22c082ff25282e43e"
+}
+
+###
+
+
+POST http://localhost/event/unregisterFromEvent
+Content-Type: application/json
+
+{
+    "eventId" : "629ca62a9a881087f383dbff",
+    "userId" : "625c28e22c082ff25282e43e"
 }
