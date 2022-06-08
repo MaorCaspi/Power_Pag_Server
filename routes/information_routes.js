@@ -92,7 +92,7 @@ router.get('/getById/:id', Information.getInformationById)
 * @swagger
 * /information:
 *   post:
-*     summary: Add new information, option- attach a png/jpg/jpeg picture with up to 4 MB size
+*     summary: Add new information, option- attach a png/jpg/jpeg picture with up to 7 MB size
 *     tags: [Information Api]
 *     requestBody:
 *       required: true

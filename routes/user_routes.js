@@ -174,7 +174,7 @@ router.get('/getMyBabyDataByUserId/:id', User.getMyBabyDataByUserId)
 * @swagger
 * /user/addMyBabyDataByUserId:
 *   post:
-*     summary: Add or edit "My baby" data to specific user by user object Id
+*     summary: Add or edit "My baby" data to specific user by user object Id , option- attach a png/jpg/jpeg picture with up to 7 MB size
 *     tags: [User Api]
 *     requestBody:
 *       required: true

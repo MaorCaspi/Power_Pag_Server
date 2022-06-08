@@ -99,7 +99,7 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 * @swagger
 * /event:
 *   post:
-*     summary: Add new event, option- attach a png/jpg/jpeg picture with up to 4 MB size
+*     summary: Add new event, option- attach a png/jpg/jpeg picture with up to 7 MB size
 *     tags: [Event Api]
 *     requestBody:
 *       required: true
