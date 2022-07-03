@@ -16,6 +16,11 @@ const informationSchema = new mongoose.Schema({
     image: {
         type: String,
         required: false
+    },
+    removalStatus: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 

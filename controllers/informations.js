@@ -2,7 +2,7 @@ const Information = require('../models/information_model')
 
 const getInformations= async (req, res) => {
     try {
-        informations = await Information.find({}, {"__v":0}).sort({subject: 1});
+        informations = await Information.find({"removalStatus" : false}, {"__v":0, "removalStatus":0}).sort({subject: 1});
         res.status(200).send(informations);
     } catch (err) {
         res.status(400).send({
@@ -58,7 +58,7 @@ const addNewInformation = (req, res) => {
 
 const getInformationSubjects = async (req, res) => {
     try {
-        subjects = await Information.find().distinct("subject");
+        subjects = await Information.find({"removalStatus" : false}).distinct("subject");
         res.status(200).send(subjects);
     } catch (err) {
         res.status(400).send({

@@ -7,7 +7,7 @@ const getEvents = async (req, res) => {
      dateNow.setHours(dateNow.getHours() + (dateNow.getTimezoneOffset()/(-60)));
 
     try {
-        events = await Event.find({dateAndTime: { $gt: dateNow }}, {"__v":0}).sort({dateAndTime: 1}).populate({
+        events = await Event.find({dateAndTime: { $gt: dateNow }, "removalStatus" : false}, {"__v":0, "removalStatus":0}).sort({dateAndTime: 1}).populate({
             path:"participants", select:["fullName","email","phoneNumber","israeliId"]});
         res.status(200).send(events)
     } catch (err) {

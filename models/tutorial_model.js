@@ -8,6 +8,11 @@ const tutorialSchema = new mongoose.Schema({
     englishURL: {
         type: String,
         required: false
+    },
+    removalStatus: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 

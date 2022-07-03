@@ -2,7 +2,7 @@ const Tutorial = require('../models/tutorial_model')
 
 const getTutorials= async (req, res) => {
     try {
-        tutorials = await Tutorial.find({}, {"__v":0});
+        tutorials = await Tutorial.find({"removalStatus" : false, "removalStatus":0}, {"__v":0});
         res.status(200).send(tutorials);
     } catch (err) {
         res.status(400).send({

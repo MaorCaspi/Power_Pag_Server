@@ -26,7 +26,12 @@ const eventSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "User"
         }
-      ]
+    ],
+    removalStatus: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 })
 
 module.exports = mongoose.model('Event', eventSchema)
