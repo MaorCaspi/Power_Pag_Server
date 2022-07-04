@@ -194,7 +194,7 @@ router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 *       400:
 *         description: Error
 */
-router.delete('/:id', Information.deleteInformationById)
+router.delete('/:id', Information.deleteInformation)
 
 /**
 * @swagger

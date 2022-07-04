@@ -221,6 +221,54 @@ router.post('/unregisterFromEvent', Event.unregisterFromEvent)
 *       400:
 *         description: Error
 */
-router.delete('/:id', Event.deleteEventById)
+router.delete('/:id', Event.deleteEvent)
+
+/**
+* @swagger
+* /event/{id}:
+*   patch:
+*     summary: Edit event, option- attach a png/jpg/jpeg picture with up to 7 MB size
+*     tags: [Event Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The event id
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                name:
+*                  type: string
+*                  default: Training diapers
+*                description:
+*                  type: string
+*                  default: 2022-04-30T13:00Z
+*                place:
+*                  type: string
+*                  default: Building A, 5th floor, room 435
+*                dateAndTime:
+*                  type: string
+*                  default: Some description text
+*             required:
+*               - name
+*               - dateAndTime
+*     responses:
+*       200:
+*         description: The event was update successfully
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Event'
+*       404:
+*         description: There is no such event object ID
+*       400:
+*         description: Error
+*/
+router.patch('/:id', upload.single('image'), Event.EditEvent)
 
 module.exports = router

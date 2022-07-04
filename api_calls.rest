@@ -18,7 +18,21 @@ Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNj
 ###
 
 
-DELETE http://localhost/event/deleteById/629ca62a9a881087f383dbff
+DELETE http://localhost/event/62c3204607f32e9a13814803
+
+###
+
+
+PATCH  http://localhost/event/62c3204607f32e9a13814803
+Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
+Content-Type: application/json
+
+{
+    "name" : "2הדרכת חיתולים",
+    "dateAndTime" : "2022-06-30T13:00Z",
+    "place" : "בניין א' קומה 5 בחדר 435",
+    "description" : "כולכם מוזמנים להדרכת חיתולים חגיגית"
+}
 
 ###
 
@@ -42,7 +56,18 @@ GET http://localhost/tutorial
 ###
 
 
-DELETE http://localhost/tutorial/deleteById/629ca62a9a881087f383dbff
+DELETE http://localhost/tutorial/629ca62a9a881087f383dbff
+
+###
+
+
+PATCH  http://localhost/tutorial/629ca62a9a881087f383dbff
+Content-Type: application/json
+
+{
+    "hebrewURL" : "8ZlinO9JguE&t",
+    "englishURL": "bG1yLTaxe6w&t"
+}
 
 ###
 
@@ -68,7 +93,7 @@ GET http://localhost/information/getById/627e4cb72efdac3131ddd758
 ###
 
 
-DELETE http://localhost/information/deleteById/627e4cb72efdac3131ddd758
+DELETE http://localhost/information/627e4cb72efdac3131ddd758
 
 ###
 

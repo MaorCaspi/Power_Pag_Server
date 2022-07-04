@@ -86,7 +86,7 @@ const getInformationsBySubject = async (req, res) => {
     }
 }
 
-const deleteInformationById = async (req, res) => {
+const deleteInformation = async (req, res) => {
     try {
         information = await Information.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
         if(!information){
@@ -112,7 +112,7 @@ const EditInformation = async (req, res) => {
     
         const updatedInformation = await Information.findByIdAndUpdate({"_id" : req.params.id}, {$set: updateObject}, { new: true });
         if(!updatedInformation){
-            res.status(404).send("No such ID found");
+            res.status(404).send("No such information object ID found");
         }
         res.status(200).send(updatedInformation);
 
@@ -131,6 +131,6 @@ module.exports = {
     addNewInformation,
     getInformationSubjects,
     getInformationsBySubject,
-    deleteInformationById,
+    deleteInformation,
     EditInformation
 }

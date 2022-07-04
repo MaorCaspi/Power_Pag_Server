@@ -100,6 +100,37 @@ router.post('/',  Tutorial.addNewTutorial)
 *       400:
 *         description: Error
 */
-router.delete('/:id', Tutorial.deleteTutorialById)
+router.delete('/:id', Tutorial.deleteTutorial)
+
+/**
+* @swagger
+* /tutorial/{id}:
+*   patch:
+*     summary: Edit video tutorial
+*     tags: [Tutorial Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             $ref: '#/components/schemas/Tutorial'
+*             properties:
+*                hebrewURL:
+*                  type: string
+*                englishURL:
+*                  type: string
+*     responses:
+*       200:
+*         description: The tutorial links was update successfully
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Tutorial'
+*       404:
+*         description: There is no such tutorial object ID
+*       400:
+*         description: Error
+*/
+router.patch('/:id', Tutorial.EditTutorial)
 
 module.exports = router

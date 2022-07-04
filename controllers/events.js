@@ -109,7 +109,7 @@ const unregisterFromEvent = async (req, res) => {
     }
 }
 
-const deleteEventById = async (req, res) => {
+const deleteEvent = async (req, res) => {
     try {
         eventResult = await Event.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
         if(!eventResult){
@@ -124,11 +124,36 @@ const deleteEventById = async (req, res) => {
     }
 }
 
+const EditEvent = async (req, res) => {
+    try {
+        const updateObject = req.body;
+
+        if(req.file){
+            const imagePath= process.env.SERVER_URL+"/"+req.file.replace('\\','/');
+            updateObject["image"] = imagePath;
+        }
+    
+        const updatedEvent = await Event.findByIdAndUpdate({"_id" : req.params.id}, {$set: updateObject}, { new: true });
+        if(!updatedEvent){
+            res.status(404).send("No such event object ID found");
+        }
+        res.status(200).send(updatedEvent);
+
+       
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getEvents,
     getEventById,
     addNewEvent,
     registerToEvent,
     unregisterFromEvent,
-    deleteEventById
+    deleteEvent,
+    EditEvent
 }

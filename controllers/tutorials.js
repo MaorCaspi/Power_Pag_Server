@@ -30,7 +30,7 @@ const addNewTutorial = (req, res) => {
     })
 }
 
-const deleteTutorialById = async (req, res) => {
+const deleteTutorial = async (req, res) => {
     try {
         tutorial = await Tutorial.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
         if(!tutorial){
@@ -45,8 +45,25 @@ const deleteTutorialById = async (req, res) => {
     }
 }
 
+const EditTutorial = async (req, res) => {
+    try {
+        const updatedTutorial = await Tutorial.findByIdAndUpdate({"_id" : req.params.id}, {$set: req.body}, { new: true });
+        if(!updatedTutorial){
+            res.status(404).send("No such tutorial object ID found");
+        }
+        res.status(200).send(updatedTutorial);
+
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getTutorials,
     addNewTutorial,
-    deleteTutorialById
+    deleteTutorial,
+    EditTutorial
 }
