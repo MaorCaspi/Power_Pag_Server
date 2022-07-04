@@ -95,6 +95,8 @@ router.post('/',  Tutorial.addNewTutorial)
 *     responses:
 *       200:
 *         description: Successful
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */

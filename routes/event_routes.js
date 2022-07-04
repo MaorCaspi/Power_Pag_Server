@@ -90,6 +90,8 @@ router.get('/', /*authenticate,*/ Event.getEvents)
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Event'
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */
@@ -156,6 +158,8 @@ router.post('/', /*authenticate,*/ upload.single('image') ,Event.addNewEvent)
 *         content:
 *           application/json:
 *             schema:
+*       404:
+*         description: There is no such ID (Event/user)
 *       400:
 *         description: Error
 */
@@ -186,6 +190,8 @@ router.post('/registerToEvent', Event.registerToEvent)
 *         content:
 *           application/json:
 *             schema:
+*       404:
+*         description: There is no such ID (Event/user)
 *       400:
 *         description: Error
 */
@@ -207,6 +213,8 @@ router.post('/unregisterFromEvent', Event.unregisterFromEvent)
 *     responses:
 *       200:
 *         description: Successful
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */

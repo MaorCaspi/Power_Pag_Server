@@ -83,6 +83,8 @@ router.get('/', Information.getInformations)
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Information'
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */
@@ -162,6 +164,8 @@ router.get('/getSubjects/', Information.getInformationSubjects)
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Information'
+*       404:
+*         description: There is no such subject ID
 *       400:
 *         description: Error
 */
@@ -183,6 +187,8 @@ router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 *     responses:
 *       200:
 *         description: Successful
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */

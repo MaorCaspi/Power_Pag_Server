@@ -32,7 +32,10 @@ const addNewTutorial = (req, res) => {
 
 const deleteTutorialById = async (req, res) => {
     try {
-        await Tutorial.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        tutorial = await Tutorial.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        if(!tutorial){
+            res.status(404).send("No such ID found");
+        }
         res.status(200).send("Successful");
     } catch (err) {
         res.status(400).send({

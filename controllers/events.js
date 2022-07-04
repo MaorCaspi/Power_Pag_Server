@@ -20,9 +20,12 @@ const getEvents = async (req, res) => {
 
 const getEventById = async (req, res) => {
     try {
-        event = await Event.findById({"_id" : req.params.id}, {"__v":0}).populate({
+        eventResult = await Event.findById({"_id" : req.params.id}, {"__v":0}).populate({
             path:"participants", select:["fullName","email","phoneNumber","israeliId"]});
-        res.status(200).send(event)
+        if(!eventResult){
+            res.status(404).send("No such ID found");
+        }
+        res.status(200).send(eventResult)
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -66,10 +69,16 @@ const addNewEvent = (req, res) => {
 
 const registerToEvent = async (req, res) => {
     try {
-        await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $addToSet: { participants: req.body.userId } },
+        eventResult = await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $addToSet: { participants: req.body.userId } },
         { new: true, useFindAndModify: false });
-        await User.findByIdAndUpdate({"_id" : req.body.userId },{ $addToSet: { registeredEvents: req.body.eventId } },
+        if(!eventResult){
+            res.status(404).send("No such event ID found");
+        }
+        user = await User.findByIdAndUpdate({"_id" : req.body.userId },{ $addToSet: { registeredEvents: req.body.eventId } },
         { new: true, useFindAndModify: false });
+        if(!user){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send("Registration successful")
     } catch (err) {
         res.status(400).send({
@@ -81,10 +90,16 @@ const registerToEvent = async (req, res) => {
 
 const unregisterFromEvent = async (req, res) => {
     try {
-        await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $pull: { participants: req.body.userId } },
+        eventResult = await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $pull: { participants: req.body.userId } },
         { new: false, useFindAndModify: false });
-        await User.findByIdAndUpdate({"_id" : req.body.userId },{ $pull: { registeredEvents: req.body.eventId } },
+        if(!eventResult){
+            res.status(404).send("No such event ID found");
+        }
+        user = await User.findByIdAndUpdate({"_id" : req.body.userId },{ $pull: { registeredEvents: req.body.eventId } },
         { new: false, useFindAndModify: false });
+        if(!user){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send("Registration was cancel successful")
     } catch (err) {
         res.status(400).send({
@@ -96,7 +111,10 @@ const unregisterFromEvent = async (req, res) => {
 
 const deleteEventById = async (req, res) => {
     try {
-        await Event.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        eventResult = await Event.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        if(!eventResult){
+            res.status(404).send("No such ID found");
+        }
         res.status(200).send("Successful");
     } catch (err) {
         res.status(400).send({

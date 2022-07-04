@@ -143,6 +143,8 @@ router.post('/register', User.register)
 *     responses:
 *       200:
 *         description: Success
+*       404:
+*         description: There is no such user ID
 *       400:
 *         description: Error
 */
@@ -165,6 +167,8 @@ router.get('/getRegisteredEventsByUserId/:id', User.getRegisteredEventsByUserId)
 *     responses:
 *       200:
 *         description: Success
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */
@@ -230,6 +234,8 @@ router.get('/getMyBabyDataByUserId/:id', User.getMyBabyDataByUserId)
 *     responses:
 *       200:
 *         description: Success
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */
@@ -262,6 +268,8 @@ router.post('/addMyBabyDataByUserId', upload.single('image'), User.addMyBabyData
 *     responses:
 *       200:
 *         description: Success
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */
@@ -284,6 +292,8 @@ router.post('/addMyBabyGrowthDataByUserId', User.addMyBabyGrowthDataByUserId)
 *     responses:
 *       200:
 *         description: Success
+*       404:
+*         description: There is no such ID
 *       400:
 *         description: Error
 */

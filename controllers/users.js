@@ -77,6 +77,9 @@ const getRegisteredEventsByUserId = async (req, res) => {
     try {
         events = await User.findById({"_id" : req.params.id}, {"registeredEvents":1}).populate({
             path:"registeredEvents", match:{dateAndTime: { $gt: dateNow }}, select:["name","place","dateAndTime"]});
+        if(!events){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send(events)
     } catch (err) {
         res.status(400).send({
@@ -89,6 +92,9 @@ const getRegisteredEventsByUserId = async (req, res) => {
 const getMyBabyDataByUserId = async (req, res) => {
     try {
         myBabyData = await User.findById({"_id" : req.params.id}, {"myBabyData":1});
+        if(!myBabyData){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send(myBabyData)
     } catch (err) {
         res.status(400).send({
@@ -104,10 +110,13 @@ const addMyBabyDataByUserId = async (req, res) => {
     try {
         if(req.file){
             const { path: image } = req.file;
-            await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.image" : process.env.SERVER_URL+"/"+image.replace('\\','/')},{ new: true, useFindAndModify: false });
+            user = await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.image" : process.env.SERVER_URL+"/"+image.replace('\\','/')},{ new: true, useFindAndModify: false });
         }
-        await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.gender" : gender, "myBabyData.dateOfBirth" : dateOfBirth, "myBabyData.birthWeek" : birthWeek, "myBabyData.birthWeight" : birthWeight, "myBabyData.firstHoldDate" : firstHoldDate, "myBabyData.firstKangarooDate" : firstKangarooDate, "myBabyData.oneKiloDate" : oneKiloDate, "myBabyData.twoKiloDate" : twoKiloDate, "myBabyData.independentBreathingDate" : independentBreathingDate, "myBabyData.firstCribDate" : firstCribDate, "myBabyData.firstBottleDate" : firstBottleDate, "myBabyData.firstFeedDate" : firstFeedDate, "myBabyData.notNeedZondaDate" : notNeedZondaDate, "myBabyData.releaseHomeDate" : releaseHomeDate},
+        user = await User.findByIdAndUpdate({"_id" : userObjectId },{ "myBabyData.gender" : gender, "myBabyData.dateOfBirth" : dateOfBirth, "myBabyData.birthWeek" : birthWeek, "myBabyData.birthWeight" : birthWeight, "myBabyData.firstHoldDate" : firstHoldDate, "myBabyData.firstKangarooDate" : firstKangarooDate, "myBabyData.oneKiloDate" : oneKiloDate, "myBabyData.twoKiloDate" : twoKiloDate, "myBabyData.independentBreathingDate" : independentBreathingDate, "myBabyData.firstCribDate" : firstCribDate, "myBabyData.firstBottleDate" : firstBottleDate, "myBabyData.firstFeedDate" : firstFeedDate, "myBabyData.notNeedZondaDate" : notNeedZondaDate, "myBabyData.releaseHomeDate" : releaseHomeDate},
         { new: true, useFindAndModify: false });
+        if(!user){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send("Successful")
     } catch (err) {
         res.status(400).send({
@@ -122,7 +131,10 @@ const addMyBabyGrowthDataByUserId = async (req, res) => {
 
     try {
         const growth= {measurementDate: measurementDate, weight:weight, headCircumference:headCircumference};
-        await User.findByIdAndUpdate({"_id" : userObjectId},{ $push: { myBabyGrowth: growth } });
+        user = await User.findByIdAndUpdate({"_id" : userObjectId},{ $push: { myBabyGrowth: growth } });
+        if(!user){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send("Successful");
     } catch (err) {
         res.status(400).send({
@@ -135,6 +147,9 @@ const addMyBabyGrowthDataByUserId = async (req, res) => {
 const getMyBabyGrowthDataByUserId = async (req, res) => {
     try {
         myBabyGrowthData = await User.findById({"_id" : req.params.id}, {"myBabyGrowth":1});
+        if(!myBabyGrowthData){
+            res.status(404).send("No such user ID found");
+        }
         res.status(200).send(myBabyGrowthData)
     } catch (err) {
         res.status(400).send({
