@@ -54,7 +54,7 @@ const addNewInformation = (req, res) => {
                 'error': error.message
             })
         } else {
-            res.status(200).send(newInformation)
+            res.status(200).send(newInformation);
         }
     })
 }
@@ -101,11 +101,36 @@ const deleteInformationById = async (req, res) => {
     }
 }
 
+const EditInformation = async (req, res) => {
+    try {
+        const updateObject = req.body;
+
+        if(req.file){
+            const imagePath= process.env.SERVER_URL+"/"+req.file.replace('\\','/');
+            updateObject["image"] = imagePath;
+        }
+    
+        const updatedInformation = await Information.findByIdAndUpdate({"_id" : req.params.id}, {$set: updateObject}, { new: true });
+        if(!updatedInformation){
+            res.status(404).send("No such ID found");
+        }
+        res.status(200).send(updatedInformation);
+
+       
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getInformations,
     getInformationById,
     addNewInformation,
     getInformationSubjects,
     getInformationsBySubject,
-    deleteInformationById
+    deleteInformationById,
+    EditInformation
 }

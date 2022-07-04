@@ -101,14 +101,16 @@ router.get('/getById/:id', Information.getInformationById)
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Information'
 *             properties:
 *                subject:
 *                  type: string
+*                  default: General
 *                title:
 *                  type: string
+*                  default: Why preterm babies cry less?
 *                text:
 *                  type: string
+*                  default: Premature babies cry less than normal babies, this is because they do not have the hormone that is responsible for crying
 *             required:
 *               - subject
 *               - title
@@ -165,7 +167,7 @@ router.get('/getSubjects/', Information.getInformationSubjects)
 *             schema:
 *               $ref: '#/components/schemas/Information'
 *       404:
-*         description: There is no such subject ID
+*         description: There is no such subject object ID
 *       400:
 *         description: Error
 */
@@ -188,10 +190,56 @@ router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 *       200:
 *         description: Successful
 *       404:
-*         description: There is no such ID
+*         description: There is no such information object ID
 *       400:
 *         description: Error
 */
 router.delete('/deleteById/:id', Information.deleteInformationById)
+
+/**
+* @swagger
+* /information/{id}:
+*   patch:
+*     summary: Edit information, option- attach a png/jpg/jpeg picture with up to 7 MB size
+*     tags: [Information Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The information id
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             properties:
+*                subject:
+*                  type: string
+*                  default: General
+*                title:
+*                  type: string
+*                  default: Why preterm babies cry less?
+*                text:
+*                  type: string
+*                  default: Premature babies cry less than normal babies, this is because they do not have the hormone that is responsible for crying
+*             required:
+*               - subject
+*               - title
+*               - text
+*     responses:
+*       200:
+*         description: The information was update successfully
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Information'
+*       404:
+*         description: There is no such information object ID
+*       400:
+*         description: Error
+*/
+router.patch('/:id', upload.single('image'), Information.EditInformation)
 
 module.exports = router
