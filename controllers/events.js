@@ -94,10 +94,23 @@ const unregisterFromEvent = async (req, res) => {
     }
 }
 
+const deleteEventById = async (req, res) => {
+    try {
+        await Event.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        res.status(200).send("Successful");
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getEvents,
     getEventById,
     addNewEvent,
     registerToEvent,
-    unregisterFromEvent
+    unregisterFromEvent,
+    deleteEventById
 }

@@ -30,7 +30,20 @@ const addNewTutorial = (req, res) => {
     })
 }
 
+const deleteTutorialById = async (req, res) => {
+    try {
+        await Tutorial.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        res.status(200).send("Successful");
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getTutorials,
-    addNewTutorial
+    addNewTutorial,
+    deleteTutorialById
 }

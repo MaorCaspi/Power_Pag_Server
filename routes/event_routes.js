@@ -191,4 +191,25 @@ router.post('/registerToEvent', Event.registerToEvent)
 */
 router.post('/unregisterFromEvent', Event.unregisterFromEvent)
 
+/**
+* @swagger
+* /event/deleteById/{id}:
+*   delete:
+*     summary: Delete event by ID
+*     tags: [Event Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The event id
+*     responses:
+*       200:
+*         description: Successful
+*       400:
+*         description: Error
+*/
+router.delete('/deleteById/:id', Event.deleteEventById)
+
 module.exports = router

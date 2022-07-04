@@ -167,4 +167,25 @@ router.get('/getSubjects/', Information.getInformationSubjects)
 */
 router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 
+/**
+* @swagger
+* /information/deleteById/{id}:
+*   delete:
+*     summary: Delete information by ID
+*     tags: [Information Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The information id
+*     responses:
+*       200:
+*         description: Successful
+*       400:
+*         description: Error
+*/
+router.delete('/deleteById/:id', Information.deleteInformationById)
+
 module.exports = router

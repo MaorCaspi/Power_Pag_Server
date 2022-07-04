@@ -80,10 +80,23 @@ const getInformationsBySubject = async (req, res) => {
     }
 }
 
+const deleteInformationById = async (req, res) => {
+    try {
+        await Information.findByIdAndUpdate({"_id" : req.params.id}, {"removalStatus":true});
+        res.status(200).send("Successful");
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
 module.exports = {
     getInformations,
     getInformationById,
     addNewInformation,
     getInformationSubjects,
-    getInformationsBySubject
+    getInformationsBySubject,
+    deleteInformationById
 }

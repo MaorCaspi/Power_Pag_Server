@@ -79,4 +79,25 @@ router.get('/',  Tutorial.getTutorials)
 */
 router.post('/',  Tutorial.addNewTutorial)
 
+/**
+* @swagger
+* /tutorial/deleteById/{id}:
+*   delete:
+*     summary: Delete tutorial by ID
+*     tags: [Tutorial Api]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The tutorial id
+*     responses:
+*       200:
+*         description: Successful
+*       400:
+*         description: Error
+*/
+router.delete('/deleteById/:id', Tutorial.deleteTutorialById)
+
 module.exports = router

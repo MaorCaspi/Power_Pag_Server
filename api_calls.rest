@@ -18,6 +18,11 @@ Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNj
 ###
 
 
+DELETE http://localhost/event/deleteById/629ca62a9a881087f383dbff
+
+###
+
+
 POST http://localhost/event
 Authorization: barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MTdkNjE3OTRhYTUyZGZhNGRlYyIsImlhdCI6MTY0ODgyNzMzMCwiZXhwIjoxNjQ4ODMwOTMwfQ.vMz4WcGZtsaeUvwIowDI7l1e74H2VGGbmBNBFmRJR14
 Content-Type: application/json
@@ -33,6 +38,11 @@ Content-Type: application/json
 
 
 GET http://localhost/tutorial
+
+###
+
+
+DELETE http://localhost/tutorial/deleteById/629ca62a9a881087f383dbff
 
 ###
 
@@ -54,6 +64,11 @@ GET http://localhost/information/
 
 
 GET http://localhost/information/getById/627e4cb72efdac3131ddd758
+
+###
+
+
+DELETE http://localhost/information/deleteById/627e4cb72efdac3131ddd758
 
 ###
 
