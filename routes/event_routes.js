@@ -108,16 +108,19 @@ router.get('/:id',/*authenticate,*/ Event.getEventById)
 *       content:
 *         application/json:
 *           schema:
-*             $ref: '#/components/schemas/Event'
 *             properties:
 *                name:
 *                  type: string
+*                  default: Training diapers
 *                description:
 *                  type: string
+*                  default: 2022-04-30T13:00Z
 *                place:
-*                 type: string
+*                  type: string
+*                  default: Building A, 5th floor, room 435
 *                dateAndTime:
-*                 type: string
+*                  type: string
+*                  default: Some description text
 *             required:
 *               - name
 *               - dateAndTime
@@ -199,7 +202,7 @@ router.post('/unregisterFromEvent', Event.unregisterFromEvent)
 
 /**
 * @swagger
-* /event/deleteById/{id}:
+* /event/{id}:
 *   delete:
 *     summary: Delete event by ID
 *     tags: [Event Api]
@@ -214,10 +217,10 @@ router.post('/unregisterFromEvent', Event.unregisterFromEvent)
 *       200:
 *         description: Successful
 *       404:
-*         description: There is no such ID
+*         description: There is no such event object ID
 *       400:
 *         description: Error
 */
-router.delete('/deleteById/:id', Event.deleteEventById)
+router.delete('/:id', Event.deleteEventById)
 
 module.exports = router

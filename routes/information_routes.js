@@ -175,7 +175,7 @@ router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 
 /**
 * @swagger
-* /information/deleteById/{id}:
+* /information/{id}:
 *   delete:
 *     summary: Delete information by ID
 *     tags: [Information Api]
@@ -194,7 +194,7 @@ router.get('/getBySubject/:subject', Information.getInformationsBySubject)
 *       400:
 *         description: Error
 */
-router.delete('/deleteById/:id', Information.deleteInformationById)
+router.delete('/:id', Information.deleteInformationById)
 
 /**
 * @swagger

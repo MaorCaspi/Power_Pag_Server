@@ -81,7 +81,7 @@ router.post('/',  Tutorial.addNewTutorial)
 
 /**
 * @swagger
-* /tutorial/deleteById/{id}:
+* /tutorial/{id}:
 *   delete:
 *     summary: Delete tutorial by ID
 *     tags: [Tutorial Api]
@@ -96,10 +96,10 @@ router.post('/',  Tutorial.addNewTutorial)
 *       200:
 *         description: Successful
 *       404:
-*         description: There is no such ID
+*         description: There is no such tutorial object ID
 *       400:
 *         description: Error
 */
-router.delete('/deleteById/:id', Tutorial.deleteTutorialById)
+router.delete('/:id', Tutorial.deleteTutorialById)
 
 module.exports = router
