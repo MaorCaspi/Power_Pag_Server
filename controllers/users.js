@@ -80,7 +80,9 @@ const getRegisteredEventsByUserId = async (req, res) => {
         if(!events){
             res.status(404).send("No such user ID found");
         }
-        res.status(200).send(events)
+        else{
+            res.status(200).send(events);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -95,7 +97,9 @@ const getMyBabyDataByUserId = async (req, res) => {
         if(!myBabyData){
             res.status(404).send("No such user ID found");
         }
-        res.status(200).send(myBabyData)
+        else{
+            res.status(200).send(myBabyData);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -117,7 +121,9 @@ const addMyBabyDataByUserId = async (req, res) => {
         if(!user){
             res.status(404).send("No such user ID found");
         }
-        res.status(200).send("Successful")
+        else{
+            res.status(200).send("Successful");
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -135,7 +141,9 @@ const addMyBabyGrowthDataByUserId = async (req, res) => {
         if(!user){
             res.status(404).send("No such user ID found");
         }
-        res.status(200).send("Successful");
+        else{
+            res.status(200).send("Successful");
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -150,7 +158,9 @@ const getMyBabyGrowthDataByUserId = async (req, res) => {
         if(!myBabyGrowthData){
             res.status(404).send("No such user ID found");
         }
-        res.status(200).send(myBabyGrowthData)
+        else{
+            res.status(200).send(myBabyGrowthData);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',

@@ -18,7 +18,9 @@ const getInformationById = async (req, res) => {
         if(!information){
             res.status(404).send("No such ID found");
         }
-        res.status(200).send(information);
+        else{
+            res.status(200).send(information);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -73,11 +75,13 @@ const getInformationSubjects = async (req, res) => {
 
 const getInformationsBySubject = async (req, res) => {
     try {
-        informations = await Information.find({"subject" : req.params.subject}, {"__v":0});
-        if(informations){
+        informations = await Information.find({"subject" : req.params.subject, "removalStatus" : false}, {"__v":0, "removalStatus":0});
+        if(!informations){
             res.status(404).send("There is no informations with this subject name");
         }
-        res.status(200).send(informations);
+        else{
+            res.status(200).send(informations);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -92,7 +96,9 @@ const deleteInformation = async (req, res) => {
         if(!information){
             res.status(404).send("No such ID found");
         }
-        res.status(200).send("Successful");
+        else{
+            res.status(200).send("Successful");
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -114,7 +120,9 @@ const EditInformation = async (req, res) => {
         if(!updatedInformation){
             res.status(404).send("No such information object ID found");
         }
-        res.status(200).send(updatedInformation);
+        else{
+            res.status(200).send(updatedInformation);
+        }
 
        
     } catch (err) {

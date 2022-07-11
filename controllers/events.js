@@ -25,7 +25,9 @@ const getEventById = async (req, res) => {
         if(!eventResult){
             res.status(404).send("No such ID found");
         }
-        res.status(200).send(eventResult)
+        else{
+            res.status(200).send(eventResult);
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -72,14 +74,14 @@ const registerToEvent = async (req, res) => {
         eventResult = await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $addToSet: { participants: req.body.userId } },
         { new: true, useFindAndModify: false });
         if(!eventResult){
-            res.status(404).send("No such event ID found");
+            return res.status(404).send("No such event ID found");
         }
         user = await User.findByIdAndUpdate({"_id" : req.body.userId },{ $addToSet: { registeredEvents: req.body.eventId } },
         { new: true, useFindAndModify: false });
         if(!user){
-            res.status(404).send("No such user ID found");
+            return res.status(404).send("No such user ID found");
         }
-        res.status(200).send("Registration successful")
+        return res.status(200).send("Registration successful");
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -93,14 +95,14 @@ const unregisterFromEvent = async (req, res) => {
         eventResult = await Event.findByIdAndUpdate({"_id" : req.body.eventId },{ $pull: { participants: req.body.userId } },
         { new: false, useFindAndModify: false });
         if(!eventResult){
-            res.status(404).send("No such event ID found");
+            return res.status(404).send("No such event ID found");
         }
         user = await User.findByIdAndUpdate({"_id" : req.body.userId },{ $pull: { registeredEvents: req.body.eventId } },
         { new: false, useFindAndModify: false });
         if(!user){
-            res.status(404).send("No such user ID found");
+            return res.status(404).send("No such user ID found");
         }
-        res.status(200).send("Registration was cancel successful")
+        return res.status(200).send("Registration was cancel successful");
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -115,7 +117,9 @@ const deleteEvent = async (req, res) => {
         if(!eventResult){
             res.status(404).send("No such ID found");
         }
-        res.status(200).send("Successful");
+        else{
+            res.status(200).send("Successful");
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -137,8 +141,9 @@ const EditEvent = async (req, res) => {
         if(!updatedEvent){
             res.status(404).send("No such event object ID found");
         }
-        res.status(200).send(updatedEvent);
-
+        else{
+            res.status(200).send(updatedEvent);
+        }
        
     } catch (err) {
         res.status(400).send({

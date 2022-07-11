@@ -127,7 +127,8 @@ GET http://localhost/information/getSubjects
 ###
 
 
-GET http://localhost/information/getBySubject/כללי
+GET http://localhost/information/getBySubject/צהבת
+
 ###
 
 
@@ -156,7 +157,7 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost/user/getMyBabyDataByUserId/625c28e22c082ff25282e43e
+GET http://localhost/user/getMyBabyDataByUserId/6299dc40059360a1a0bd7f07
 
 ###
 
@@ -196,7 +197,7 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost/user/getMyBabyGrowthDataByUserId/625c28e22c082ff25282e43e
+GET http://localhost/user/getMyBabyGrowthDataByUserId/6299dc40059360a1a0bd7f07
 
 ###
 
@@ -209,7 +210,7 @@ POST http://localhost/event/registerToEvent
 Content-Type: application/json
 
 {
-    "eventId" : "629ca62a9a881087f383dbff",
+    "eventId" : "624d6f664d0198d93326288a",
     "userId" : "625c28e22c082ff25282e43e"
 }
 

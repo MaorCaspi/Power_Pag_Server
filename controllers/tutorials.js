@@ -36,7 +36,9 @@ const deleteTutorial = async (req, res) => {
         if(!tutorial){
             res.status(404).send("No such ID found");
         }
-        res.status(200).send("Successful");
+        else{
+            res.status(200).send("Successful");
+        }
     } catch (err) {
         res.status(400).send({
             'status': 'fail',
@@ -51,7 +53,9 @@ const EditTutorial = async (req, res) => {
         if(!updatedTutorial){
             res.status(404).send("No such tutorial object ID found");
         }
-        res.status(200).send(updatedTutorial);
+        else{
+            res.status(200).send(updatedTutorial);
+        }
 
     } catch (err) {
         res.status(400).send({
