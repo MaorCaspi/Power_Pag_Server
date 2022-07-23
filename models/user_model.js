@@ -21,10 +21,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phoneNumber: {
-        type: String,
-        required: true
-    },
     adminPrivilege: {
         type: Boolean,
         required: true,
