@@ -7,7 +7,7 @@ Due to the huge amount of false data on the internet, and most importantly the b
 After listening to all their need, we started developing our app, and the result is My BabyApp. This app unites all the critical data required for the parents, all the relevant tutorials, and the option to sign up for an event and run tracking on the development of their baby.<br/>
 By giving those options to the users, we are on the one hand making the life of the parents a lot easier during their stay, and on the other hand, allowing the nurses a lot more quiet and time to do their job properly.<br/>
 
-The backend side was written in Node.js environment using the libraries Express Mongoose and many more... <br/>
+The backend side was written in Node.js environment using the libraries Express, Mongoose and etc. <br/>
 
 ### Links
 Swagger documentation page:<br/>
